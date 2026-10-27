@@ -1,0 +1,328 @@
+{
+  "nav": {
+    "problems": "Problems & Solutions",
+    "services": "Services",
+    "projects": "Demo Projects",
+    "pricing": "Packages & Pricing",
+    "about": "About Viraj",
+    "whyMe": "Agency vs Me",
+    "howItWorks": "Process",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "available": "Available for new projects",
+    "talk": "Direct Contact"
+  },
+  "hero": {
+    "badge": "Affordable Digital Solutions for Small Businesses & Startups",
+    "ratingBadge": "Direct Developer • Honest Pricing",
+    "title": "Grow your business online, at a fixed and fair price",
+    "subtitle": "Superfast mobile websites, store billing software, and custom apps designed for retail shops, agro centers, clinics, and local traders in rural & semi-urban areas. No confusing jargon, 100% transparent delivery.",
+    "ctaWhatsApp": "Free WhatsApp Consultation",
+    "ctaEstimate": "View Plans & Pricing",
+    "ctaCall": "Call: +91 7414912464",
+    "ctaServices": "Explore Services",
+    "stats": {
+      "exp": "3+ Years Experience",
+      "expSub": "Full-Stack Software Engineer",
+      "pricing": "Reply in 2 Hours",
+      "pricingSub": "Guaranteed Upfront Quote - Zero Surprises",
+      "support": "Direct Developer",
+      "supportSub": "No Agency Sales Reps or Middlemen",
+      "speed": "Fast Turnaround",
+      "speedSub": "Live in 3 to 10 Days"
+    }
+  },
+  "problems": {
+    "badge": "Do You Face These Bottlenecks?",
+    "title": "3 Common Digital Roadblocks for Small Businesses",
+    "subtitle": "Over 90% of local traders and shop owners lose customers because of these 3 hurdles:",
+    "item1": {
+      "title": "1. Customers Can't Find Your Shop on Google",
+      "desc": "New locals or passing travelers search Google Maps for 'nearest shop/clinic'. Without an active listing, they head straight to your competitors.",
+      "impact": "Losing 15 to 30 potential customers every month."
+    },
+    "item2": {
+      "title": "2. Billing, Accounts, and Ledgers are Still on Paper",
+      "desc": "Manual notebooks cause calculation errors, lost pages, and customers don't get printed receipts. Reconciling daily registers wastes 1-2 hours every evening.",
+      "impact": "Stuck credit (udhari) and massive time waste."
+    },
+    "item3": {
+      "title": "3. Big IT Agencies Quote ₹50,000+ with Complex Jargon",
+      "desc": "City agencies have large office overheads and project managers. They quote exorbitant rates and communicate in technical terms that don't solve your practical problem.",
+      "impact": "Budget blowouts with no tangible local results."
+    },
+    "solutionBadge": "The Simple, Affordable Fix",
+    "solutionTitle": "Viraj Patil — Your Personal Digital Partner (Plans starting from ₹4,999)",
+    "solutionCTA": "View My Services"
+  },
+  "industries": {
+    "badge": "Who Is This For?",
+    "title": "Businesses I Specialize In",
+    "subtitle": "Does your business fall under any of these? See what we build for you:",
+    "kirana": {
+      "title": "Grocery & Kirana Store",
+      "solution": "WhatsApp order catalog and fast thermal billing receipt software.",
+      "example": "Kirana POS"
+    },
+    "agro": {
+      "title": "Agro Center & Fertilizers",
+      "solution": "Live seed & fertilizer rates with instant stock WhatsApp updates for farmers.",
+      "example": "Agro Catalog"
+    },
+    "clinic": {
+      "title": "Clinics, Doctors & Labs",
+      "solution": "OPD token booking system, clinic timings, and direct Google Maps navigation.",
+      "example": "Clinic Portal"
+    },
+    "dairy": {
+      "title": "Dairy & Milk Collection",
+      "solution": "Daily milk collection ledger, fat rate cards, and automated SMS receipts.",
+      "example": "Dairy System"
+    },
+    "tailor": {
+      "title": "Tailoring, Clothes & Boutique",
+      "solution": "Design showcase gallery, customer measurement records, and order tracking.",
+      "example": "Boutique Showcase"
+    },
+    "school": {
+      "title": "Schools & Coaching Classes",
+      "solution": "Admission inquiry forms, fee ledger, exam results, and digital notice board.",
+      "example": "Class Portal"
+    }
+  },
+  "services": {
+    "badge": "Service Catalog",
+    "title": "What I Can Build For You",
+    "subtitle": "Pick only what your business genuinely needs. No bloated packages or hidden upsells.",
+    "items": [
+      {
+        "name": "Business Website",
+        "tag": "Most Popular",
+        "shortDesc": "Modern, lightweight website that loads in under 2 seconds even on slow mobile internet.",
+        "bullet1": "Guaranteed Google Maps & Search listing",
+        "bullet2": "Direct 1-click WhatsApp order button for customers"
+      },
+      {
+        "name": "Shop Billing POS Software",
+        "tag": "Best for Retail",
+        "shortDesc": "Clean desktop software for fast item scanning and instant thermal receipt printing.",
+        "bullet1": "Works with 2-inch and 3-inch thermal printers seamlessly",
+        "bullet2": "Daily profit/loss reporting and customer credit ledger"
+      },
+      {
+        "name": "Mobile Android App",
+        "tag": "Store in Their Pocket",
+        "shortDesc": "Fast and lightweight Android application that runs smoothly on low-budget smartphones.",
+        "bullet1": "Send direct push notifications to your customers",
+        "bullet2": "Offline support — basic functions work without internet"
+      },
+      {
+        "name": "Online Product Catalog",
+        "tag": "Boost Sales",
+        "shortDesc": "Showcase your full inventory and updated rates directly on customer phones.",
+        "bullet1": "Customers select items and send orders directly via WhatsApp",
+        "bullet2": "Easy for you to update prices or stock anytime"
+      },
+      {
+        "name": "Google Business & Local SEO",
+        "tag": "Get Local Leads",
+        "shortDesc": "Ensure your shop appears at the top when people in your town search on Google.",
+        "bullet1": "Complete 5-star Google Business profile verification",
+        "bullet2": "Photos, opening hours, exact GPS location, and direct call button"
+      },
+      {
+        "name": "WhatsApp Automation & Bot",
+        "tag": "Save Time",
+        "shortDesc": "Auto-respond to customer questions even when your shop is closed or you are busy.",
+        "bullet1": "Automatically sends shop address, hours, and catalog menu",
+        "bullet2": "Never lose an inquiry while attending to in-store customers"
+      }
+    ]
+  },
+  "sampleWork": {
+    "badge": "Interactive Demos",
+    "title": "Concept & Demo Projects",
+    "subtitle": "Explore these interactive prototypes to see the exact interface and quality you receive:",
+    "disclaimer": "Note: These projects are interactive live concept demos built to illustrate real-world functionality.",
+    "viewDemo": "View Live Demo (Interactive Preview)",
+    "requestSimilar": "Build Something Similar For Me"
+  },
+  "howItWorks": {
+    "title": "A Transparent 4-Step Process",
+    "subtitle": "No technical friction. Clear deadlines, upfront quotes, and zero surprises.",
+    "steps": [
+      {
+        "step": "01",
+        "title": "Free Discovery Call",
+        "timeline": "Day 1",
+        "desc": "Understanding your daily store workflow, bottlenecks and honest budget over phone or WhatsApp."
+      },
+      {
+        "step": "02",
+        "title": "Visual Preview Mockup",
+        "timeline": "Day 2",
+        "desc": "Showing you an interactive prototype of how your website/software will look before coding begins."
+      },
+      {
+        "step": "03",
+        "title": "Development & Revisions",
+        "timeline": "Days 3 to 6",
+        "desc": "Building the full system with 2 complimentary revision cycles to match your preferences."
+      },
+      {
+        "step": "04",
+        "title": "Live Launch & Training",
+        "timeline": "Day 7+",
+        "desc": "Deploying live on Google with a personal 1-on-1 walkthrough so you can operate it confidently."
+      }
+    ]
+  },
+  "pricing": {
+    "badge": "Upfront Rates",
+    "title": "3 Simple, Fixed-Price Packages",
+    "subtitle": "Zero hidden costs. You know the exact price before work begins.",
+    "ctaPackage": "Select This Package (WhatsApp)",
+    "basic": {
+      "name": "Basic Starter",
+      "tag": "For Small Shops",
+      "timeline": "3 to 5 Days",
+      "desc": "The fastest way to put your store on Google and start capturing online inquiries.",
+      "f1": "1-Page superfast mobile website",
+      "f2": "Google Maps business profile registration",
+      "f3": "1-Click WhatsApp order & call buttons",
+      "f4": "100% mobile-optimized layout",
+      "f5": "2 Months free technical support"
+    },
+    "business": {
+      "name": "Business Standard",
+      "tag": "Most Popular ★",
+      "timeline": "7 to 10 Days",
+      "desc": "Complete digital presence for clinics, agro centers, and expanding businesses.",
+      "f1": "4-5 Pages complete website structure",
+      "f2": "Product or service photo catalog",
+      "f3": "Lead capture inquiry form (routes directly to WhatsApp)",
+      "f4": "Local Google Search optimization (SEO setup)",
+      "f5": "6 Months free technical maintenance & backups",
+      "f6": "2 Rounds of revisions included after delivery"
+    },
+    "custom": {
+      "name": "Custom Shop POS / Mobile App",
+      "tag": "Custom Systems",
+      "timeline": "14 to 20 Days",
+      "desc": "Thermal billing software for store counters or an Android app for customer orders.",
+      "f1": "Thermal invoice printing & barcode scanner support",
+      "f2": "Daily sales, expense, and credit ledger accounting",
+      "f3": "Offline-first architecture (works without internet)",
+      "f4": "Custom features tailored to your workflow",
+      "f5": "1 Year free updates and full staff training",
+      "f6": "Direct phone and video call support"
+    },
+    "terms": {
+      "header": "Important Terms & Yearly Running Costs (100% Transparency):",
+      "domainHosting": "Domain (.in costs approx. ₹600-800/yr) and cloud hosting (approx. ₹1,200 to ₹1,800/yr). Free tier cloud hosting options also available.",
+      "paymentSchedule": "50% advance to start development, 50% upon final delivery after your complete satisfaction.",
+      "revisions": "Includes 2 complimentary revision cycles after website delivery to tweak content or design.",
+      "gst": "Individual Freelance service. GST is not currently charged, saving you an immediate 18%."
+    }
+  },
+  "about": {
+    "badge": "About Me",
+    "title": "I'm Viraj Patil — A Dedicated Developer From Rural Maharashtra",
+    "para1": "Coming from a rural background in Maharashtra, I have spent the last 3+ years working as a full-stack software engineer. I saw firsthand how city agencies overcharge small shopkeepers and local clinics for basic websites.",
+    "para2": "My mission is simple: provide farmers, grocery stores, doctors, and local traders with high quality, reliable digital tools at fair and honest prices, without technical jargon.",
+    "para3": "Even if you have never used a computer before, do not worry. I build everything to be dead-simple and guide you personally in your preferred language."
+  },
+  "comparison": {
+    "title": "Big IT Agencies vs. Working with Viraj",
+    "subtitle": "See how working directly with an independent engineer saves you money and time:",
+    "agencyLabel": "Large IT Agencies / Firms",
+    "meLabel": "Viraj Patil (Direct Developer)",
+    "items": [
+      {
+        "metric": "Pricing & Costs",
+        "agency": "₹30,000 to ₹60,000+ (overhead for rent & account managers)",
+        "me": "₹4,999 to ₹14,999 (fair, honest & fixed upfront)"
+      },
+      {
+        "metric": "Delivery Timeline",
+        "agency": "1 to 2 months (bureaucracy and long meeting chains)",
+        "me": "Live in 3 to 10 days"
+      },
+      {
+        "metric": "Language & Jargon",
+        "agency": "Complicated technical buzzwords with little patience to explain",
+        "me": "Clear, patient communication in Marathi or English"
+      },
+      {
+        "metric": "Support & Access",
+        "agency": "Must submit support tickets; takes days to resolve",
+        "me": "Direct WhatsApp or phone call to my personal number"
+      }
+    ]
+  },
+  "trust": {
+    "badge": "Integrity & Commitment",
+    "title": "4 Pillars of Client Trust",
+    "subtitle": "So you can work together with complete peace of mind:",
+    "timelines": {
+      "title": "On-Time Delivery",
+      "desc": "Projects delivered within the promised timeframe. Daily progress updates so you are never left guessing."
+    },
+    "refund": {
+      "title": "Satisfaction Guarantee",
+      "desc": "If the initial mockup does not align with your vision, we make revisions until it fits your exact needs."
+    },
+    "privacy": {
+      "title": "100% Data Confidentiality",
+      "desc": "Your customer databases, sales figures, and contact lists remain private and will never be shared."
+    },
+    "support": {
+      "title": "Post-Launch Guidance",
+      "desc": "We don't disappear after handover. Ongoing phone and WhatsApp assistance is always available."
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Clear, straightforward answers to common questions:",
+    "items": [
+      {
+        "q": "Will this website or app work smoothly on my budget ₹5,000 to ₹7,000 Android phone?",
+        "a": "Yes, 100%! All sites and applications I build are specifically optimized for budget Android smartphones and load in under 2 seconds even on slow 2G/3G/4G rural networks."
+      },
+      {
+        "q": "I don't know computers or English. Can I manage this easily?",
+        "a": "Absolutely! You don't need any technical skills. Everything is built with clear buttons and can be operated in Marathi or English. After launch, I provide a personal 1-on-1 walkthrough over phone or video call."
+      },
+      {
+        "q": "What are domain and hosting, and what do they cost every year?",
+        "a": "A domain is your shop's online name (like yourshop.in), and hosting is the secure cloud server where your files live. A .in domain costs approx. ₹600-800/year, and hosting is approx. ₹1,200 to ₹1,800/year. Free cloud tier options are also available."
+      },
+      {
+        "q": "What do I need to provide to start, and what are the payment terms?",
+        "a": "Just send your shop name, address, phone number, and a few photos of your store/products via WhatsApp. 50% advance to begin work, and the remaining 50% via PhonePe/GPay only after the project is complete and approved by you."
+      },
+      {
+        "q": "If something stops working later, who helps me fix it?",
+        "a": "Viraj Patil directly! You will never have to deal with automated bots or waiting on customer care. Just call or message my personal WhatsApp number."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Let's Modernize Your Business Today",
+    "subtitle": "Reach out directly for a free consultation or custom advice.",
+    "directText": "I respond personally via phone or WhatsApp. No middlemen or sales reps.",
+    "form": {
+      "name": "Your Name",
+      "phone": "Mobile Number (WhatsApp)",
+      "service": "Service Required",
+      "message": "Tell me a little about your business...",
+      "submit": "Send Inquiry",
+      "quickWhatsApp": "Chat Directly on WhatsApp",
+      "success": "Thank you! I have received your inquiry and will contact you within 2 hours."
+    }
+  },
+  "footer": {
+    "text": "Honest, high quality digital solutions built for retail shopkeepers, clinics, and local businesses.",
+    "location": "Maharashtra, India"
+  }
+}

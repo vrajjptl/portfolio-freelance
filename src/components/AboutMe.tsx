@@ -48,14 +48,18 @@ const AboutMe: React.FC = () => {
 
               <div>
                 <h3 className="text-2xl font-extrabold text-slate-900 dark:text-gray-100">
-                  विराज पाटील (Viraj Patil)
+                  {i18n.language === 'mr' ? 'विराज पाटील (Viraj Patil)' : 'Viraj Patil'}
                 </h3>
                 <p className="text-sm font-semibold text-cyan-700 dark:text-cyan-400">
-                  Full-Stack Developer • 3+ वर्षे अनुभव
+                  Full-Stack Developer • {i18n.language === 'mr' ? '३+ वर्षांचा अनुभव' : '3+ Years Experience'}
                 </p>
                 <div className="flex items-center justify-center gap-1.5 text-xs text-slate-500 dark:text-gray-400 mt-1">
                   <MapPinIcon className="w-4 h-4 text-rose-500" />
-                  <span>महाराष्ट्र (सांगली / कोल्हापूर / पुणे)</span>
+                  <span>
+                    {i18n.language === 'mr'
+                      ? 'महाराष्ट्र (सांगली / कोल्हापूर / पुणे)'
+                      : 'Maharashtra, India (Sangli / Kolhapur / Pune)'}
+                  </span>
                 </div>
               </div>
 
@@ -75,7 +79,7 @@ const AboutMe: React.FC = () => {
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 dark:bg-white/5 dark:text-gray-300 text-xs font-bold transition-all"
                 >
                   <PhoneIcon className="w-4 h-4" />
-                  <span>थेट फोन</span>
+                  <span>{i18n.language === 'mr' ? 'थेट फोन' : 'Call Me'}</span>
                 </a>
               </div>
             </div>
@@ -106,12 +110,24 @@ const AboutMe: React.FC = () => {
               {/* Guarantees row */}
               <div className="grid grid-cols-2 gap-3 pt-3">
                 <div className="p-3 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/5 text-xs text-slate-700 dark:text-gray-300">
-                  <div className="font-bold text-slate-900 dark:text-gray-100 mb-0.5">🤝 थेट स्वतः काम करतो</div>
-                  <div>कोणताही तिसरा मध्यस्थ किंवा एजन्सी नाही.</div>
+                  <div className="font-bold text-slate-900 dark:text-gray-100 mb-0.5">
+                    {i18n.language === 'mr' ? '🤝 थेट स्वतः काम करतो' : '🤝 Direct Developer'}
+                  </div>
+                  <div>
+                    {i18n.language === 'mr'
+                      ? 'कोणताही तिसरा मध्यस्थ किंवा एजन्सी नाही.'
+                      : 'No middleman, salespeople, or agency markups.'}
+                  </div>
                 </div>
                 <div className="p-3 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/5 text-xs text-slate-700 dark:text-gray-300">
-                  <div className="font-bold text-slate-900 dark:text-gray-100 mb-0.5">🗣️ मराठीतून सोपा संवाद</div>
-                  <div>कोणतेही इंग्रजी जार्गन नाही, थेट हिशोब.</div>
+                  <div className="font-bold text-slate-900 dark:text-gray-100 mb-0.5">
+                    {i18n.language === 'mr' ? '🗣️ सोपा थेट संवाद' : '🗣️ Simple Communication'}
+                  </div>
+                  <div>
+                    {i18n.language === 'mr'
+                      ? 'कोणतेही कठीण जार्गन नाही, थेट पारदर्शक काम.'
+                      : 'No confusing tech jargon, clear honest updates.'}
+                  </div>
                 </div>
               </div>
             </div>

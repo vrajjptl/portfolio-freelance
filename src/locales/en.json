@@ -3,7 +3,7 @@
     "problems": "Problems & Solutions",
     "services": "Services",
     "projects": "Demo Projects",
-    "pricing": "Packages & Pricing",
+    "pricing": "Packages",
     "about": "About Viraj",
     "whyMe": "Agency vs Me",
     "howItWorks": "Process",
@@ -18,14 +18,14 @@
     "title": "Grow your business online, at a fixed and fair price",
     "subtitle": "Superfast mobile websites, store billing software, and custom apps designed for retail shops, agro centers, clinics, and local traders in rural & semi-urban areas. No confusing jargon, 100% transparent delivery.",
     "ctaWhatsApp": "Free WhatsApp Consultation",
-    "ctaEstimate": "View Plans & Pricing",
+    "ctaEstimate": "Explore Packages ↓",
     "ctaCall": "Call: +91 7414912464",
     "ctaServices": "Explore Services",
     "stats": {
       "exp": "3+ Years Experience",
       "expSub": "Full-Stack Software Engineer",
-      "pricing": "Reply in 2 Hours",
-      "pricingSub": "Guaranteed Upfront Quote - Zero Surprises",
+      "pricing": "Affordable",
+      "pricingSub": "Clear custom quote, zero hidden fees",
       "support": "Direct Developer",
       "supportSub": "No Agency Sales Reps or Middlemen",
       "speed": "Fast Turnaround",
@@ -52,7 +52,7 @@
       "impact": "Budget blowouts with no tangible local results."
     },
     "solutionBadge": "The Simple, Affordable Fix",
-    "solutionTitle": "Viraj Patil — Your Personal Digital Partner (Plans starting from ₹4,999)",
+    "solutionTitle": "Viraj Patil — Your Personal Digital Partner",
     "solutionCTA": "View My Services"
   },
   "industries": {
@@ -178,51 +178,54 @@
     ]
   },
   "pricing": {
-    "badge": "Upfront Rates",
-    "title": "3 Simple, Fixed-Price Packages",
-    "subtitle": "Zero hidden costs. You know the exact price before work begins.",
-    "ctaPackage": "Select This Package (WhatsApp)",
+    "badge": "Tailored Plans",
+    "title": "3 Simple, Straightforward Packages",
+    "subtitle": "No complex calculators or hidden fees. Pick the package that fits your needs and get a free quote on WhatsApp.",
+    "ctaPackage": "Inquire on WhatsApp",
     "basic": {
       "name": "Basic Starter",
-      "tag": "For Small Shops",
-      "timeline": "3 to 5 Days",
-      "desc": "The fastest way to put your store on Google and start capturing online inquiries.",
+      "tag": "For Small Retailers",
+      "timeline": "Ready in 3 to 5 Days",
+      "desc": "The quickest way to get your business discovered on Google and start receiving online inquiries.",
+      "priceLabel": "Affordable Plan",
       "f1": "1-Page superfast mobile website",
-      "f2": "Google Maps business profile registration",
-      "f3": "1-Click WhatsApp order & call buttons",
-      "f4": "100% mobile-optimized layout",
-      "f5": "2 Months free technical support"
+      "f2": "Google Maps business profile setup",
+      "f3": "Direct 1-click WhatsApp order & call buttons",
+      "f4": "100% mobile-friendly responsive layout",
+      "f5": "2 Months complimentary tech support"
     },
     "business": {
       "name": "Business Standard",
-      "tag": "Most Popular ★",
-      "timeline": "7 to 10 Days",
-      "desc": "Complete digital presence for clinics, agro centers, and expanding businesses.",
+      "tag": "Most Popular ⭐",
+      "timeline": "Ready in 7 to 10 Days",
+      "desc": "Complete digital presence for clinics, agro centers, schools, and expanding businesses.",
+      "priceLabel": "Tailored Quote",
       "f1": "4-5 Pages complete website structure",
-      "f2": "Product or service photo catalog",
-      "f3": "Lead capture inquiry form (routes directly to WhatsApp)",
-      "f4": "Local Google Search optimization (SEO setup)",
-      "f5": "6 Months free technical maintenance & backups",
-      "f6": "2 Rounds of revisions included after delivery"
+      "f2": "Product showcase or service gallery",
+      "f3": "Direct lead inquiry form routing to WhatsApp",
+      "f4": "Local Google Search optimization (SEO)",
+      "f5": "6 Months technical maintenance & backups",
+      "f6": "2 Free revision rounds included after delivery"
     },
     "custom": {
-      "name": "Custom Shop POS / Mobile App",
+      "name": "Custom POS / Mobile App",
       "tag": "Custom Systems",
-      "timeline": "14 to 20 Days",
-      "desc": "Thermal billing software for store counters or an Android app for customer orders.",
-      "f1": "Thermal invoice printing & barcode scanner support",
-      "f2": "Daily sales, expense, and credit ledger accounting",
+      "timeline": "Ready in 14 to 20 Days",
+      "desc": "Fast desktop thermal billing software for counters or a custom Android app for orders.",
+      "priceLabel": "Custom Scope",
+      "f1": "Thermal bill printing & barcode scanner support",
+      "f2": "Daily sales, credit ledger & stock tracking",
       "f3": "Offline-first architecture (works without internet)",
-      "f4": "Custom features tailored to your workflow",
-      "f5": "1 Year free updates and full staff training",
-      "f6": "Direct phone and video call support"
+      "f4": "Customized specifically for your daily workflow",
+      "f5": "1 Year free updates and complete staff training",
+      "f6": "Direct personal phone and video assistance"
     },
     "terms": {
-      "header": "Important Terms & Yearly Running Costs (100% Transparency):",
-      "domainHosting": "Domain (.in costs approx. ₹600-800/yr) and cloud hosting (approx. ₹1,200 to ₹1,800/yr). Free tier cloud hosting options also available.",
-      "paymentSchedule": "50% advance to start development, 50% upon final delivery after your complete satisfaction.",
-      "revisions": "Includes 2 complimentary revision cycles after website delivery to tweak content or design.",
-      "gst": "Individual Freelance service. GST is not currently charged, saving you an immediate 18%."
+      "header": "100% Transparent Process (Zero Hidden Costs):",
+      "domainHosting": "Domain and hosting are registered under your name, giving you 100% ownership and full credentials.",
+      "paymentSchedule": "Milestones agreed upfront before work begins. Clear payment terms with no surprise invoices.",
+      "revisions": "Includes complimentary revision cycles to make sure you are completely satisfied with the result.",
+      "gst": "Direct developer collaboration — zero agency overheads or sales commission markups."
     }
   },
   "about": {
@@ -239,9 +242,9 @@
     "meLabel": "Viraj Patil (Direct Developer)",
     "items": [
       {
-        "metric": "Pricing & Costs",
-        "agency": "₹30,000 to ₹60,000+ (overhead for rent & account managers)",
-        "me": "₹4,999 to ₹14,999 (fair, honest & fixed upfront)"
+        "metric": "Budget & Cost",
+        "agency": "Expensive fee structures with bloated agency overheads",
+        "me": "Fair, affordable and honest quotes with zero surprises"
       },
       {
         "metric": "Delivery Timeline",

@@ -1,23 +1,23 @@
 // src/components/PricingPackages.tsx
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   CheckIcon,
   SparklesIcon,
-  InformationCircleIcon,
+  ShieldCheckIcon,
   ArrowRightIcon,
+  ChatBubbleLeftRightIcon,
 } from '@heroicons/react/24/solid';
 
 const PricingPackages: React.FC = () => {
   const { t, i18n } = useTranslation();
-  const [billingPeriod] = useState<'one-time'>('one-time');
 
   const packages = [
     {
       id: 'basic',
       name: t('pricing.basic.name'),
       tag: t('pricing.basic.tag'),
-      price: '₹4,999',
+      priceLabel: t('pricing.basic.priceLabel'),
       timeline: t('pricing.basic.timeline'),
       desc: t('pricing.basic.desc'),
       isPopular: false,
@@ -30,14 +30,14 @@ const PricingPackages: React.FC = () => {
       ],
       waMessage:
         i18n.language === 'mr'
-          ? 'नमस्कार विराज, मला ₹4,999 चे बेसिक वेबसाईट पॅकेज सुरू करायचे आहे.'
-          : 'Hi Viraj, I want to get started with the ₹4,999 Basic Website Package.',
+          ? 'नमस्कार विराज, मला "बेसिक स्टार्टर" वेबसाईट पॅकेजविषयी माहिती व कोटेशन हवे आहे.'
+          : 'Hi Viraj, I want to inquire about the Basic Starter website package for my business.',
     },
     {
       id: 'business',
       name: t('pricing.business.name'),
       tag: t('pricing.business.tag'),
-      price: '₹8,999',
+      priceLabel: t('pricing.business.priceLabel'),
       timeline: t('pricing.business.timeline'),
       desc: t('pricing.business.desc'),
       isPopular: true,
@@ -51,14 +51,14 @@ const PricingPackages: React.FC = () => {
       ],
       waMessage:
         i18n.language === 'mr'
-          ? 'नमस्कार विराज, मला ₹8,999 चे व्यावसायिक वेबसाईट पॅकेज (Business Plan) घ्यायचे आहे.'
-          : 'Hi Viraj, I want to inquire about the ₹8,999 Business Website Package.',
+          ? 'नमस्कार विराज, मला "बिझनेस स्टँडर्ड" पॅकेजविषयी सविस्तर माहिती व कोटेशन हवे आहे.'
+          : 'Hi Viraj, I would like to discuss the Business Standard package for my business.',
     },
     {
       id: 'custom',
       name: t('pricing.custom.name'),
       tag: t('pricing.custom.tag'),
-      price: '₹14,999+',
+      priceLabel: t('pricing.custom.priceLabel'),
       timeline: t('pricing.custom.timeline'),
       desc: t('pricing.custom.desc'),
       isPopular: false,
@@ -72,7 +72,7 @@ const PricingPackages: React.FC = () => {
       ],
       waMessage:
         i18n.language === 'mr'
-          ? 'नमस्कार विराज, मला दुकान बिलिंग सॉफ्टवेअर किंवा मोबाईल ॲपबद्दल बोलायचे आहे.'
+          ? 'नमस्कार विराज, मला कस्टम दुकान बिलिंग सॉफ्टवेअर किंवा मोबाईल ॲपबद्दल चर्चा करायची आहे.'
           : 'Hi Viraj, I want to discuss a Custom POS Billing Software or Mobile App project.',
     },
   ];
@@ -83,7 +83,7 @@ const PricingPackages: React.FC = () => {
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-cyan-50 dark:bg-cyan-950/60 border border-cyan-200 dark:border-cyan-500/30 text-xs font-bold text-cyan-700 dark:text-cyan-300">
-            <span>💰</span>
+            <span>✨</span>
             <span>{t('pricing.badge')}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-gray-100 tracking-tight">
@@ -94,7 +94,7 @@ const PricingPackages: React.FC = () => {
           </p>
         </div>
 
-        {/* 3 Packages Grid */}
+        {/* 3 Packages Grid - Clean, Super Simple, No Clutter */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch mb-14">
           {packages.map((pkg) => (
             <div
@@ -121,28 +121,25 @@ const PricingPackages: React.FC = () => {
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-gray-100 mt-1 mb-2">
                   {pkg.name}
                 </h3>
-                <p className="text-sm text-slate-600 dark:text-gray-300 mb-6">
+                <p className="text-sm text-slate-600 dark:text-gray-300 mb-6 leading-relaxed">
                   {pkg.desc}
                 </p>
 
-                <div className="mb-6 p-4 rounded-2xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/5">
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-extrabold text-slate-900 dark:text-gray-100">
-                      {pkg.price}
-                    </span>
-                    <span className="text-xs text-slate-500 dark:text-gray-400 font-medium">
-                      / एकरकमी खर्च (One-time)
-                    </span>
+                {/* Scope & Timeline Header */}
+                <div className="mb-6 p-4 rounded-2xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/5 space-y-1.5">
+                  <div className="inline-block px-3 py-1 rounded-full bg-cyan-50 dark:bg-cyan-950/60 border border-cyan-200 dark:border-cyan-500/30 text-xs font-bold text-cyan-700 dark:text-cyan-300">
+                    {pkg.priceLabel}
                   </div>
-                  <div className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold mt-1">
-                    ⏱️ डिलिव्हरी: {pkg.timeline}
+                  <div className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1.5 pt-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span>{pkg.timeline}</span>
                   </div>
                 </div>
 
                 {/* Features list */}
                 <div className="space-y-3 mb-8">
                   <div className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-gray-300">
-                    समाविष्ट सुविधा:
+                    {i18n.language === 'mr' ? 'समाविष्ट बाबी:' : 'What is included:'}
                   </div>
                   {pkg.features.map((feat, idx) => (
                     <div key={idx} className="flex items-start gap-2.5 text-sm text-slate-700 dark:text-gray-300">
@@ -164,6 +161,7 @@ const PricingPackages: React.FC = () => {
                     : 'bg-slate-100 hover:bg-slate-200 text-slate-800 dark:bg-white/10 dark:hover:bg-white/15 dark:text-gray-100 hover:scale-[1.02]'
                 }`}
               >
+                <ChatBubbleLeftRightIcon className="w-4 h-4" />
                 <span>{t('pricing.ctaPackage')}</span>
                 <ArrowRightIcon className="w-4 h-4" />
               </a>
@@ -171,52 +169,29 @@ const PricingPackages: React.FC = () => {
           ))}
         </div>
 
-        {/* Clear Transparent Cost Details Box */}
-        <div className="p-8 rounded-3xl bg-white dark:bg-gray-900/70 border border-slate-200 dark:border-white/10 shadow-lg space-y-6">
+        {/* Super Simple 1-Box Transparency Card */}
+        <div className="p-8 rounded-3xl bg-white dark:bg-gray-900/70 border border-slate-200 dark:border-white/10 shadow-lg space-y-4">
           <div className="flex items-center gap-2 text-base font-bold text-slate-900 dark:text-gray-100">
-            <InformationCircleIcon className="w-6 h-6 text-cyan-500 flex-shrink-0" />
+            <ShieldCheckIcon className="w-6 h-6 text-emerald-500 flex-shrink-0" />
             <span>{t('pricing.terms.header')}</span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
-            {/* Domain & Hosting */}
-            <div className="space-y-1.5 p-4 rounded-2xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200/80 dark:border-white/5">
-              <div className="font-bold text-slate-900 dark:text-gray-100">
-                🌐 डोमेन व होस्टिंग खर्च
-              </div>
-              <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
-                {t('pricing.terms.domainHosting')}
-              </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-600 dark:text-gray-300">
+            <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200/80 dark:border-white/5 flex items-start gap-2.5">
+              <span className="text-cyan-600 font-bold">✓</span>
+              <span>{t('pricing.terms.paymentSchedule')}</span>
             </div>
-
-            {/* Payment Terms */}
-            <div className="space-y-1.5 p-4 rounded-2xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200/80 dark:border-white/5">
-              <div className="font-bold text-slate-900 dark:text-gray-100">
-                💳 पेमेंट अटी (Payment Terms)
-              </div>
-              <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
-                {t('pricing.terms.paymentSchedule')}
-              </p>
+            <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200/80 dark:border-white/5 flex items-start gap-2.5">
+              <span className="text-cyan-600 font-bold">✓</span>
+              <span>{t('pricing.terms.domainHosting')}</span>
             </div>
-
-            {/* Revisions */}
-            <div className="space-y-1.5 p-4 rounded-2xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200/80 dark:border-white/5">
-              <div className="font-bold text-slate-900 dark:text-gray-100">
-                🔄 रिव्हिजन्स (बदल)
-              </div>
-              <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
-                {t('pricing.terms.revisions')}
-              </p>
+            <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200/80 dark:border-white/5 flex items-start gap-2.5">
+              <span className="text-cyan-600 font-bold">✓</span>
+              <span>{t('pricing.terms.revisions')}</span>
             </div>
-
-            {/* GST Details */}
-            <div className="space-y-1.5 p-4 rounded-2xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200/80 dark:border-white/5">
-              <div className="font-bold text-slate-900 dark:text-gray-100">
-                📑 GST व बिलिंग माहिती
-              </div>
-              <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
-                {t('pricing.terms.gst')}
-              </p>
+            <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200/80 dark:border-white/5 flex items-start gap-2.5">
+              <span className="text-cyan-600 font-bold">✓</span>
+              <span>{t('pricing.terms.gst')}</span>
             </div>
           </div>
         </div>

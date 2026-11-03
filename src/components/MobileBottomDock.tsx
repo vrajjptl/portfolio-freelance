@@ -41,14 +41,14 @@ const MobileBottomDock: React.FC = () => {
           <span>{i18n.language === 'mr' ? 'फोन' : 'Call'}</span>
         </a>
 
-        {/* Cost & Packages Button */}
+        {/* Packages Button */}
         <button
           type="button"
           onClick={scrollToPricing}
           className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-cyan-700 dark:text-cyan-300 font-bold text-xs active:scale-95 transition-transform"
         >
           <BanknotesIcon className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
-          <span>{i18n.language === 'mr' ? 'किंमत' : 'Pricing'}</span>
+          <span>{i18n.language === 'mr' ? 'पॅकेजेस' : 'Packages'}</span>
         </button>
       </div>
     </aside>

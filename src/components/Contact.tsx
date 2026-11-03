@@ -233,7 +233,7 @@ const Contact: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-50 dark:bg-cyan-950/60 border border-cyan-200 dark:border-cyan-500/30 text-xs font-semibold text-cyan-700 dark:text-cyan-300 shadow-sm">
             <span>💬</span>
-            <span>GET IN TOUCH</span>
+            <span>{i18n.language === 'mr' ? 'संपर्क साधा' : 'GET IN TOUCH'}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
             <span className="gradient-text">{t('contact.title')}</span>
@@ -249,7 +249,7 @@ const Contact: React.FC = () => {
           <div className="lg:col-span-5 space-y-6">
             <div className="p-8 rounded-3xl bg-white/80 dark:bg-gray-900/40 border border-slate-200/80 dark:border-white/10 space-y-6 shadow-xl transition-colors duration-300">
               <h3 className="text-xl font-bold text-slate-900 dark:text-gray-100">
-                Direct Communication
+                {i18n.language === 'mr' ? 'थेट संपर्क' : 'Direct Communication'}
               </h3>
               <p className="text-sm text-slate-600 dark:text-gray-400 leading-relaxed">
                 {t('contact.directText')}
@@ -269,11 +269,15 @@ const Contact: React.FC = () => {
                     </svg>
                   </div>
                   <div>
-                    <div className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold uppercase tracking-wider">Fastest Reply</div>
+                    <div className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold uppercase tracking-wider">
+                      {i18n.language === 'mr' ? 'सर्वात जलद उत्तर' : 'Fastest Reply'}
+                    </div>
                     <div className="text-sm font-bold text-slate-900 dark:text-gray-100">+91 7414912464</div>
                   </div>
                 </div>
-                <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">Open Chat →</span>
+                <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                  {i18n.language === 'mr' ? 'चॅट सुरू करा →' : 'Open Chat →'}
+                </span>
               </a>
 
               {/* Contact Information List */}
@@ -286,7 +290,9 @@ const Contact: React.FC = () => {
                     <PhoneIcon className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-xs text-slate-500 dark:text-gray-400">Phone Call</div>
+                    <div className="text-xs text-slate-500 dark:text-gray-400">
+                      {i18n.language === 'mr' ? 'फोन कॉल' : 'Phone Call'}
+                    </div>
                     <div className="text-sm font-semibold text-slate-800 dark:text-gray-200">+91 7414912464</div>
                   </div>
                 </a>
@@ -299,7 +305,9 @@ const Contact: React.FC = () => {
                     <EnvelopeIcon className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-xs text-slate-500 dark:text-gray-400">Email Address</div>
+                    <div className="text-xs text-slate-500 dark:text-gray-400">
+                      {i18n.language === 'mr' ? 'ईमेल पत्ता' : 'Email Address'}
+                    </div>
                     <div className="text-sm font-semibold text-slate-800 dark:text-gray-200">vrajpatil9891@gmail.com</div>
                   </div>
                 </a>
@@ -309,8 +317,14 @@ const Contact: React.FC = () => {
                     <MapPinIcon className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-xs text-slate-500 dark:text-gray-400">Location</div>
-                    <div className="text-sm font-semibold text-slate-800 dark:text-gray-200">Maharashtra, India (Remote Available)</div>
+                    <div className="text-xs text-slate-500 dark:text-gray-400">
+                      {i18n.language === 'mr' ? 'पत्ता' : 'Location'}
+                    </div>
+                    <div className="text-sm font-semibold text-slate-800 dark:text-gray-200">
+                      {i18n.language === 'mr'
+                        ? 'महाराष्ट्र (रिमोट / ऑनलाइन सेवा)'
+                        : 'Maharashtra, India (Remote Available)'}
+                    </div>
                   </div>
                 </div>
 
@@ -319,8 +333,12 @@ const Contact: React.FC = () => {
                     <ClockIcon className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-xs text-slate-500 dark:text-gray-400">Response Time</div>
-                    <div className="text-sm font-semibold text-emerald-600 dark:text-emerald-300">Typically within 2 hours</div>
+                    <div className="text-xs text-slate-500 dark:text-gray-400">
+                      {i18n.language === 'mr' ? 'उत्तर देण्याची वेळ' : 'Response Time'}
+                    </div>
+                    <div className="text-sm font-semibold text-emerald-600 dark:text-emerald-300">
+                      {i18n.language === 'mr' ? 'साधारण २ तासांत उत्तर' : 'Typically within 2 hours'}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -329,7 +347,7 @@ const Contact: React.FC = () => {
             {/* Social & Profiles Connect Box */}
             <div className="p-6 rounded-3xl bg-white/80 dark:bg-gray-900/40 border border-slate-200/80 dark:border-white/10 shadow-lg space-y-4 transition-colors duration-300">
               <div className="text-xs font-bold text-slate-500 dark:text-gray-400 uppercase tracking-wider">
-                Connect Across Platforms
+                {i18n.language === 'mr' ? 'सोशल प्रोफाईल्स' : 'Connect Across Platforms'}
               </div>
               <div className="grid grid-cols-2 gap-2.5">
                 {socialProfiles.map((item) => (
@@ -371,7 +389,7 @@ const Contact: React.FC = () => {
                       onClick={sendDirectWhatsApp}
                       className="px-6 py-3 rounded-full bg-gradient-to-r from-emerald-500 to-green-600 text-white font-bold text-xs shadow-md shadow-emerald-500/20 hover:scale-105 transition-all flex items-center gap-2"
                     >
-                      <span>💬 WhatsApp वरही पाठवा</span>
+                      <span>{i18n.language === 'mr' ? '💬 WhatsApp वरही पाठवा' : '💬 Also send via WhatsApp'}</span>
                       <span>→</span>
                     </button>
                     <button
@@ -457,21 +475,37 @@ const Contact: React.FC = () => {
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-2xl bg-slate-50 dark:bg-gray-950/70 border border-slate-200 dark:border-white/10 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 text-sm text-slate-800 dark:text-gray-200 outline-none transition-all"
                     >
-                      <option value="">Select a service (or general inquiry)</option>
-                      <option value="Website Design & Development">Website Design & Development</option>
-                      <option value="Web Applications">Web Application</option>
-                      <option value="Mobile App (Android)">Mobile App (Android)</option>
-                      <option value="Desktop Shop Billing App">Desktop Shop Billing / POS</option>
-                      <option value="Business Automation">Business Automation</option>
-                      <option value="AI Chatbot Integration">AI Chatbot Integration</option>
-                      <option value="Other / Not Sure">Other / Just need advice</option>
+                      <option value="">
+                        {i18n.language === 'mr' ? 'सेवा निवडा (किंवा सामान्य माहिती)' : 'Select a service (or general inquiry)'}
+                      </option>
+                      <option value="Website Design & Development">
+                        {i18n.language === 'mr' ? 'वेबसाईट डिझाइन व डेव्हलपमेंट' : 'Website Design & Development'}
+                      </option>
+                      <option value="Web Applications">
+                        {i18n.language === 'mr' ? 'वेब ॲप्लिकेशन' : 'Web Applications'}
+                      </option>
+                      <option value="Mobile App (Android)">
+                        {i18n.language === 'mr' ? 'मोबाईल ॲप (अँड्रॉइड)' : 'Mobile App (Android)'}
+                      </option>
+                      <option value="Desktop Shop Billing App">
+                        {i18n.language === 'mr' ? 'दुकान बिलिंग व POS सॉफ्टवेअर' : 'Desktop Shop Billing / POS'}
+                      </option>
+                      <option value="Business Automation">
+                        {i18n.language === 'mr' ? 'बिझनेस ऑटोमेशन' : 'Business Automation'}
+                      </option>
+                      <option value="AI Chatbot Integration">
+                        {i18n.language === 'mr' ? 'AI चॅटबॉट एकत्रीकरण' : 'AI Chatbot Integration'}
+                      </option>
+                      <option value="Other / Not Sure">
+                        {i18n.language === 'mr' ? 'इतर / सल्ला हवा आहे' : 'Other / Just need advice'}
+                      </option>
                     </select>
                   </div>
 
                   {/* Message */}
                   <div className="space-y-1.5">
                     <label htmlFor="contact-message" className="text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wider">
-                      Message / Project Details *
+                      {i18n.language === 'mr' ? 'संदेश / कामाची माहिती *' : 'Message / Project Details *'}
                     </label>
                     <textarea
                       id="contact-message"

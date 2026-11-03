@@ -9,7 +9,7 @@ interface FAQItem {
 }
 
 const FAQ: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const items = t('faq.items', { returnObjects: true }) as FAQItem[];
   const [openIndex, setOpenIndex] = useState<number | null>(0); // First item open by default
 
@@ -27,7 +27,7 @@ const FAQ: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-50 dark:bg-cyan-950/60 border border-cyan-200 dark:border-cyan-500/30 text-xs font-semibold text-cyan-700 dark:text-cyan-300 shadow-sm">
             <span>❓</span>
-            <span>GOT QUESTIONS?</span>
+            <span>{i18n.language === 'mr' ? 'काही शंका आहेत?' : 'GOT QUESTIONS?'}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
             <span className="gradient-text">{t('faq.title')}</span>
@@ -77,15 +77,21 @@ const FAQ: React.FC = () => {
         {/* Additional help box */}
         <div className="mt-12 p-6 rounded-3xl bg-white dark:bg-gradient-to-r dark:from-gray-900/80 dark:to-gray-950 border border-slate-200 dark:border-white/10 shadow-md dark:shadow-none text-center flex flex-col sm:flex-row items-center justify-between gap-4 transition-colors duration-300">
           <div className="text-xs text-slate-600 dark:text-gray-300 font-medium">
-            Have a different question not listed here? Ask directly:
+            {i18n.language === 'mr'
+              ? 'इथे नसलेला वेगळा प्रश्न आहे? थेट विचारा:'
+              : 'Have a different question not listed here? Ask directly:'}
           </div>
           <a
-            href="https://wa.me/917414912464?text=Hi%20Viraj%2C%20I%20have%20a%20question%20about%20your%20services."
+            href={`https://wa.me/917414912464?text=${encodeURIComponent(
+              i18n.language === 'mr'
+                ? 'नमस्कार विराज, मला तुमच्या सेवांबद्दल एक प्रश्न विचारायचा होता.'
+                : 'Hi Viraj, I have a question about your digital services.'
+            )}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 dark:bg-emerald-500/20 dark:hover:bg-emerald-500/30 dark:border-emerald-500/40 dark:text-emerald-300 font-semibold text-xs transition-all"
           >
-            <span>Ask Viraj on WhatsApp</span>
+            <span>{i18n.language === 'mr' ? 'WhatsApp वर थेट विचारा' : 'Ask Viraj on WhatsApp'}</span>
             <span>→</span>
           </a>
         </div>

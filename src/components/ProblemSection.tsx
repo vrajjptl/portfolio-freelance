@@ -9,7 +9,7 @@ import {
 } from '@heroicons/react/24/outline';
 
 const ProblemSection: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const problems = [
     {
@@ -75,7 +75,7 @@ const ProblemSection: React.FC = () => {
                 </p>
               </div>
               <div className="pt-4 border-t border-slate-100 dark:border-white/5 text-xs font-semibold text-rose-600 dark:text-rose-400 flex items-center gap-1.5">
-                <span>नुकसान:</span>
+                <span>{i18n.language === 'mr' ? 'नुकसान:' : 'Impact:'}</span>
                 <span>{prob.impact}</span>
               </div>
             </div>

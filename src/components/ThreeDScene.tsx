@@ -1,6 +1,7 @@
 // src/components/ThreeDScene.tsx
 import React, { useRef } from 'react';
 import * as THREE from 'three';
+import { useTranslation } from 'react-i18next';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Float, MeshDistortMaterial, OrbitControls, Sparkles, Html } from '@react-three/drei';
 
@@ -127,6 +128,9 @@ const CoreSphere: React.FC = () => {
    Scene composition with OrbitControls & lighting
    ────────────────────────────────────────────────────── */
 const ThreeDScene: React.FC = () => {
+  const { i18n } = useTranslation();
+  const isEn = i18n.language === 'en';
+
   return (
     <div className="relative w-full h-full select-none cursor-grab active:cursor-grabbing">
       <Canvas
@@ -149,10 +153,26 @@ const ThreeDScene: React.FC = () => {
         <Sparkles count={45} scale={4} size={2.5} speed={0.35} color="#38bdf8" />
 
         {/* Floating holographic pills positioned safely inside 3D frame */}
-        <FloatingBadge position={[1.15, 0.95, 0.2]} icon="⚡" label="परवडणारे दर" />
-        <FloatingBadge position={[-1.15, 0.85, -0.2]} icon="💻" label="वेब व ॲप" />
-        <FloatingBadge position={[1.1, -0.95, -0.2]} icon="🚀" label="सुपरफास्ट" />
-        <FloatingBadge position={[-1.1, -0.85, 0.2]} icon="📱" label="मोबाईल फर्स्ट" />
+        <FloatingBadge
+          position={[1.15, 0.95, 0.2]}
+          icon="⚡"
+          label={isEn ? 'Affordable' : 'परवडणारे दर'}
+        />
+        <FloatingBadge
+          position={[-1.15, 0.85, -0.2]}
+          icon="💻"
+          label={isEn ? 'Web & Apps' : 'वेब व ॲप'}
+        />
+        <FloatingBadge
+          position={[1.1, -0.95, -0.2]}
+          icon="🚀"
+          label={isEn ? 'Superfast' : 'सुपरफास्ट'}
+        />
+        <FloatingBadge
+          position={[-1.1, -0.85, 0.2]}
+          icon="📱"
+          label={isEn ? 'Mobile First' : 'मोबाईल फर्स्ट'}
+        />
 
         {/* Controls - allow user to freely drag and rotate 360 degrees */}
         <OrbitControls
@@ -170,7 +190,7 @@ const ThreeDScene: React.FC = () => {
       {/* Interactive Drag Hint */}
       <div className="pointer-events-none absolute bottom-2 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-white/80 dark:bg-gray-900/70 backdrop-blur-md border border-slate-200 dark:border-white/10 text-[11px] font-medium text-slate-600 dark:text-gray-400 flex items-center gap-1.5 shadow-sm transition-colors duration-300">
         <span>👆</span>
-        <span>Drag to rotate 3D core</span>
+        <span>{isEn ? 'Drag to rotate 3D core' : 'फिरवून ३D कोर पहा'}</span>
       </div>
     </div>
   );

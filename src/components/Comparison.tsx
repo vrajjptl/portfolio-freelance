@@ -38,7 +38,7 @@ const Comparison: React.FC = () => {
           {/* Header Row */}
           <div className="grid grid-cols-1 md:grid-cols-12 border-b border-slate-200 dark:border-white/10 text-center md:text-left bg-slate-50 dark:bg-white/[0.02]">
             <div className="md:col-span-4 p-5 font-bold text-sm text-slate-600 dark:text-gray-400 uppercase tracking-wider hidden md:block">
-              Feature / Expectation
+              {i18n.language === 'mr' ? 'वैशिष्ट्ये / अपेक्षा' : 'Feature / Expectation'}
             </div>
             <div className="md:col-span-4 p-5 font-bold text-sm text-red-600 dark:text-red-400 uppercase tracking-wider border-t md:border-t-0 md:border-l border-slate-200 dark:border-white/10 flex items-center justify-center md:justify-start gap-2">
               <XCircleIcon className="w-5 h-5 text-red-500" />
@@ -64,13 +64,17 @@ const Comparison: React.FC = () => {
 
                 {/* Big Agency Column */}
                 <div className="md:col-span-4 p-5 text-xs sm:text-sm text-slate-600 dark:text-gray-400 border-t md:border-t-0 md:border-l border-slate-100 dark:border-white/5 flex items-start gap-2 bg-red-50/30 dark:bg-red-950/[0.04]">
-                  <span className="text-red-500 font-bold md:hidden">Agency:</span>
+                  <span className="text-red-500 font-bold md:hidden">
+                    {i18n.language === 'mr' ? 'एजन्सी:' : 'Agency:'}
+                  </span>
                   <span>{row.agency}</span>
                 </div>
 
                 {/* Viraj Patil Column */}
                 <div className="md:col-span-4 p-5 text-xs sm:text-sm text-cyan-900 dark:text-cyan-200 font-medium border-t md:border-t-0 md:border-l border-slate-100 dark:border-white/5 bg-cyan-50/40 dark:bg-cyan-950/20 flex items-start gap-2">
-                  <span className="text-cyan-600 font-bold md:hidden">Viraj:</span>
+                  <span className="text-cyan-600 font-bold md:hidden">
+                    {i18n.language === 'mr' ? 'विराज:' : 'Viraj:'}
+                  </span>
                   <span>{row.me}</span>
                 </div>
               </div>

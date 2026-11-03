@@ -198,21 +198,32 @@ const SampleWork: React.FC = () => {
                 {activeModal === 'agro' && (
                   <div className="space-y-4">
                     <div className="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-500/30 text-xs text-emerald-800 dark:text-emerald-300">
-                      💡 <strong>कस्टमरचा अनुभव:</strong> शेतकरी मोबाईलवर चालू खत-बियाणे दर पाहतात आणि एका क्लिकवर WhatsApp वर बुकिंग करतात.
+                      💡 <strong>{i18n.language === 'mr' ? 'कस्टमरचा अनुभव:' : 'Customer Experience:'}</strong>{' '}
+                      {i18n.language === 'mr'
+                        ? 'शेतकरी मोबाईलवर चालू खत-बियाणे दर पाहतात आणि एका क्लिकवर WhatsApp वर बुकिंग करतात.'
+                        : 'Farmers view live seed and fertilizer rates on their phone and place WhatsApp orders with one tap.'}
                     </div>
                     <div className="space-y-2 border border-slate-200 dark:border-white/10 rounded-2xl p-4">
-                      <div className="font-bold text-sm text-slate-900 dark:text-gray-100 mb-2">आजचे उपलब्ध साठा व दर:</div>
-                      <div className="flex justify-between items-center py-2 border-b border-slate-100 dark:border-white/5 text-xs text-slate-700 dark:text-gray-300">
-                        <span>युरिया (Urea 45kg)</span>
-                        <span className="font-bold text-emerald-600 dark:text-emerald-400">₹२६६ (उपलब्ध)</span>
+                      <div className="font-bold text-sm text-slate-900 dark:text-gray-100 mb-2">
+                        {i18n.language === 'mr' ? 'आजचे उपलब्ध साठा व दर:' : "Today's Available Stock & Rates:"}
                       </div>
                       <div className="flex justify-between items-center py-2 border-b border-slate-100 dark:border-white/5 text-xs text-slate-700 dark:text-gray-300">
-                        <span>१०:२६:२६ (NPK खत 50kg)</span>
-                        <span className="font-bold text-emerald-600 dark:text-emerald-400">₹१,४५० (उपलब्ध)</span>
+                        <span>{i18n.language === 'mr' ? 'युरिया (Urea 45kg)' : 'Urea (45kg bag)'}</span>
+                        <span className="font-bold text-emerald-600 dark:text-emerald-400">
+                          {i18n.language === 'mr' ? 'उपलब्ध साठा' : 'In Stock'}
+                        </span>
+                      </div>
+                      <div className="flex justify-between items-center py-2 border-b border-slate-100 dark:border-white/5 text-xs text-slate-700 dark:text-gray-300">
+                        <span>{i18n.language === 'mr' ? '१०:२६:२६ (NPK खत 50kg)' : '10:26:26 (NPK Fertilizer 50kg)'}</span>
+                        <span className="font-bold text-emerald-600 dark:text-emerald-400">
+                          {i18n.language === 'mr' ? 'उपलब्ध साठा' : 'In Stock'}
+                        </span>
                       </div>
                       <div className="flex justify-between items-center py-2 text-xs text-slate-700 dark:text-gray-300">
-                        <span>सोयाबीन बियाणे (३० किलो बॅग)</span>
-                        <span className="font-bold text-emerald-600 dark:text-emerald-400">₹२,८०० (उपलब्ध)</span>
+                        <span>{i18n.language === 'mr' ? 'सोयाबीन बियाणे (३० किलो बॅग)' : 'Soybean Seeds (30kg bag)'}</span>
+                        <span className="font-bold text-emerald-600 dark:text-emerald-400">
+                          {i18n.language === 'mr' ? 'उपलब्ध साठा' : 'In Stock'}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -221,22 +232,35 @@ const SampleWork: React.FC = () => {
                 {activeModal === 'clinic' && (
                   <div className="space-y-4">
                     <div className="p-4 rounded-2xl bg-cyan-50 dark:bg-cyan-950/30 border border-cyan-200 dark:border-cyan-500/30 text-xs text-cyan-800 dark:text-cyan-300">
-                      💡 <strong>क्लिनिकचा अनुभव:</strong> रुग्णांना फोन करायची गरज नाही. थेट तारीख व वेळ निवडून घरूनच टोकन नंबर मिळतो.
+                      💡 <strong>{i18n.language === 'mr' ? 'क्लिनिकचा अनुभव:' : 'Clinic Experience:'}</strong>{' '}
+                      {i18n.language === 'mr'
+                        ? 'रुग्णांना फोन करायची गरज नाही. थेट तारीख व वेळ निवडून घरूनच टोकन नंबर मिळतो.'
+                        : 'Patients select date and time online and receive an instant OPD token without waiting on phone calls.'}
                     </div>
                     <div className="border border-slate-200 dark:border-white/10 rounded-2xl p-4 space-y-3">
-                      <div className="text-xs text-slate-500 dark:text-gray-400 font-mono">डॉ. पाटील क्लिनिक, कोल्हापूर रोड</div>
+                      <div className="text-xs text-slate-500 dark:text-gray-400 font-mono">
+                        {i18n.language === 'mr' ? 'डॉ. पाटील क्लिनिक, कोल्हापूर रोड' : 'Dr. Patil Clinic, Station Road'}
+                      </div>
                       <div className="p-3 rounded-xl bg-slate-50 dark:bg-white/5 flex items-center justify-between">
                         <div>
-                          <div className="text-xs font-bold text-slate-900 dark:text-gray-100">आजचे चालू टोकन: #१४</div>
-                          <div className="text-[11px] text-slate-500 dark:text-gray-400">अंदाजे तपासणी वेळ: १० मिनिटे</div>
+                          <div className="text-xs font-bold text-slate-900 dark:text-gray-100">
+                            {i18n.language === 'mr' ? 'आजचे चालू टोकन: #१४' : 'Current Serving Token: #14'}
+                          </div>
+                          <div className="text-[11px] text-slate-500 dark:text-gray-400">
+                            {i18n.language === 'mr' ? 'अंदाजे तपासणी वेळ: १० मिनिटे' : 'Approx Wait: 10 mins'}
+                          </div>
                         </div>
                         <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 text-xs font-bold">
-                          OPD सुरू
+                          {i18n.language === 'mr' ? 'OPD सुरू' : 'OPD Active'}
                         </span>
                       </div>
                       <div className="text-xs text-slate-600 dark:text-gray-300 flex items-center gap-1.5">
                         <CheckCircleIcon className="w-4 h-4 text-emerald-500" />
-                        <span>Google Maps व थेट क्लिनिक फोन नंबर जोडलेला</span>
+                        <span>
+                          {i18n.language === 'mr'
+                            ? 'Google Maps व थेट क्लिनिक फोन नंबर जोडलेला'
+                            : 'Connected to Google Maps & Direct Clinic Calling'}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -245,27 +269,32 @@ const SampleWork: React.FC = () => {
                 {activeModal === 'pos' && (
                   <div className="space-y-4">
                     <div className="p-4 rounded-2xl bg-purple-50 dark:bg-purple-950/30 border border-purple-200 dark:border-purple-500/30 text-xs text-purple-800 dark:text-purple-300">
-                      💡 <strong>दुकानदाराचा अनुभव:</strong> बारकोड स्कॅन करा किंवा वस्तूचे नाव टाका. ३ सेकंदात २-इंच थर्मल प्रिंटरवरून छापील बिल तयार.
+                      💡 <strong>{i18n.language === 'mr' ? 'दुकानदाराचा अनुभव:' : 'Shopkeeper Experience:'}</strong>{' '}
+                      {i18n.language === 'mr'
+                        ? 'बारकोड स्कॅन करा किंवा वस्तूचे नाव टाका. ३ सेकंदात २-इंच थर्मल प्रिंटरवरून छापील बिल तयार.'
+                        : 'Scan barcode or enter item name. A clean 2-inch thermal receipt prints out in 3 seconds.'}
                     </div>
                     <div className="border border-slate-200 dark:border-white/10 rounded-2xl p-4 bg-slate-50 dark:bg-white/[0.02] font-mono text-xs space-y-2">
                       <div className="text-center font-bold pb-2 border-b border-dashed border-slate-300 dark:border-white/10">
-                        *** श्री समर्थ सुपरमार्केट ***
+                        {i18n.language === 'mr' ? '*** श्री समर्थ सुपरमार्केट ***' : '*** Shree Samarth Supermarket ***'}
                       </div>
                       <div className="flex justify-between">
-                        <span>१. बासमती तांदूळ (५ किलो)</span>
-                        <span>₹३५०.००</span>
+                        <span>{i18n.language === 'mr' ? '१. बासमती तांदूळ (५ किलो)' : '1. Basmati Rice (5kg)'}</span>
+                        <span>Qty: 1</span>
                       </div>
                       <div className="flex justify-between">
-                        <span>२. सूर्यफूल तेल (१ लिटर)</span>
-                        <span>₹१४०.००</span>
+                        <span>{i18n.language === 'mr' ? '२. सूर्यफूल तेल (१ लिटर)' : '2. Sunflower Oil (1L)'}</span>
+                        <span>Qty: 1</span>
                       </div>
                       <div className="flex justify-between">
-                        <span>३. साखर (२ किलो)</span>
-                        <span>₹८४.००</span>
+                        <span>{i18n.language === 'mr' ? '३. साखर (२ किलो)' : '3. Sugar (2kg)'}</span>
+                        <span>Qty: 2</span>
                       </div>
                       <div className="flex justify-between pt-2 border-t border-dashed border-slate-300 dark:border-white/10 font-bold text-sm">
-                        <span>एकूण बिल (Total):</span>
-                        <span className="text-emerald-600 dark:text-emerald-400">₹५७४.००</span>
+                        <span>{i18n.language === 'mr' ? 'थर्मल पावती प्रिंट' : 'Thermal Bill Print'}</span>
+                        <span className="text-emerald-600 dark:text-emerald-400">
+                          {i18n.language === 'mr' ? 'यशस्वी' : 'Completed'}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -287,7 +316,7 @@ const SampleWork: React.FC = () => {
                   rel="noopener noreferrer"
                   className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 text-white font-bold text-xs shadow-md shadow-emerald-500/20 hover:scale-105 transition-all"
                 >
-                  WhatsApp वर कोटेशन मागा →
+                  {i18n.language === 'mr' ? 'WhatsApp वर कोटेशन मागा →' : 'Request Quote on WhatsApp →'}
                 </a>
               </div>
             </div>

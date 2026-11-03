@@ -106,7 +106,7 @@ const Services: React.FC = () => {
                   rel="noopener noreferrer"
                   className="w-full py-2.5 px-4 rounded-xl bg-white dark:bg-white/5 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 border border-slate-200 dark:border-white/10 hover:border-emerald-300 font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-sm"
                 >
-                  <span>WhatsApp वर कोटेशन मागा</span>
+                  <span>{i18n.language === 'mr' ? 'WhatsApp वर चर्चा करा' : 'Discuss on WhatsApp'}</span>
                   <ArrowRightIcon className="w-3.5 h-3.5" />
                 </a>
               </div>

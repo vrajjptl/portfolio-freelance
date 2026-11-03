@@ -12,7 +12,7 @@ interface HowItWorksStep {
 const stepEmojis = ['💬', '📋', '💻', '🚀'];
 
 const HowItWorks: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const steps = t('howItWorks.steps', { returnObjects: true }) as HowItWorksStep[];
 
   return (
@@ -25,7 +25,7 @@ const HowItWorks: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-50 dark:bg-cyan-950/60 border border-cyan-200 dark:border-cyan-500/30 text-xs font-semibold text-cyan-700 dark:text-cyan-300 shadow-sm">
             <span>⚡</span>
-            <span>TRANSPARENT PROCESS</span>
+            <span>{i18n.language === 'mr' ? 'पारदर्शक पद्धत' : 'TRANSPARENT PROCESS'}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
             <span className="gradient-text">{t('howItWorks.title')}</span>

@@ -3,129 +3,155 @@ import React, { useRef } from 'react';
 import * as THREE from 'three';
 import { useTranslation } from 'react-i18next';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Float, MeshDistortMaterial, OrbitControls, Sparkles, Html } from '@react-three/drei';
+import { Float, OrbitControls } from '@react-three/drei';
 
 /* ──────────────────────────────────────────────────────
-   Floating 3D holographic tag badge
+   Inner Geometric Core (Faceted Dark Crystal with Pulse)
    ────────────────────────────────────────────────────── */
-const FloatingBadge: React.FC<{
-  position: [number, number, number];
-  icon: string;
-  label: string;
-}> = ({ position, icon, label }) => {
-  return (
-    <Html position={position} center distanceFactor={8.5} zIndexRange={[100, 0]}>
-      <div className="pointer-events-none select-none flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/95 dark:bg-gray-900/90 backdrop-blur-md border border-cyan-500/40 shadow-md shadow-cyan-500/10 text-[11px] font-bold text-slate-800 dark:text-cyan-300 whitespace-nowrap transition-colors duration-300">
-        <span className="text-xs">{icon}</span>
-        <span>{label}</span>
-      </div>
-    </Html>
-  );
-};
+const InnerCore: React.FC = () => {
+  const meshRef = useRef<THREE.Mesh>(null!);
+  const wireRef = useRef<THREE.Mesh>(null!);
 
-/* ──────────────────────────────────────────────────────
-   Outer rotating wireframe cage
-   ────────────────────────────────────────────────────── */
-const WireframeCage: React.FC = () => {
-  const ref = useRef<THREE.Mesh>(null!);
-
-  useFrame((_, delta) => {
-    if (ref.current) {
-      ref.current.rotation.x -= delta * 0.12;
-      ref.current.rotation.y -= delta * 0.2;
+  useFrame((state, delta) => {
+    const t = state.clock.elapsedTime;
+    if (meshRef.current) {
+      meshRef.current.rotation.y += delta * 0.35;
+      meshRef.current.rotation.x = Math.sin(t * 0.5) * 0.2;
+    }
+    if (wireRef.current) {
+      wireRef.current.rotation.y -= delta * 0.25;
+      wireRef.current.rotation.z += delta * 0.15;
     }
   });
 
   return (
-    <mesh ref={ref} scale={1.55}>
-      <icosahedronGeometry args={[1, 1]} />
-      <meshBasicMaterial
+    <group>
+      {/* Faceted Solid Tech Core */}
+      <mesh ref={meshRef}>
+        <icosahedronGeometry args={[0.68, 1]} />
+        <meshStandardMaterial
+          color="#0f172a"
+          emissive="#0284c7"
+          emissiveIntensity={0.45}
+          roughness={0.2}
+          metalness={0.85}
+          flatShading
+        />
+      </mesh>
+
+      {/* Delicate Micro-Wireframe Lattice */}
+      <mesh ref={wireRef} scale={1.03}>
+        <icosahedronGeometry args={[0.68, 1]} />
+        <meshBasicMaterial
+          color="#38bdf8"
+          wireframe
+          transparent
+          opacity={0.35}
+        />
+      </mesh>
+
+      {/* Internal Core Glow Point Light */}
+      <pointLight color="#06b6d4" intensity={1.8} distance={3.5} />
+    </group>
+  );
+};
+
+/* ──────────────────────────────────────────────────────
+   Outer Frosted Glass Sphere (Smooth & Minimal)
+   ────────────────────────────────────────────────────── */
+const GlassShell: React.FC = () => {
+  return (
+    <mesh>
+      <sphereGeometry args={[1.15, 64, 64]} />
+      <meshPhysicalMaterial
         color="#38bdf8"
-        wireframe
+        transmission={0.88}
+        roughness={0.12}
+        ior={1.45}
+        thickness={1.4}
+        reflectivity={0.65}
+        clearcoat={1}
+        clearcoatRoughness={0.08}
         transparent
-        opacity={0.3}
+        opacity={0.95}
       />
     </mesh>
   );
 };
 
 /* ──────────────────────────────────────────────────────
-   Concentric gyroscopic neon rings
+   Single Minimalist Orbital Ring & Milestone Satellite
    ────────────────────────────────────────────────────── */
-const GyroRings: React.FC = () => {
-  const ring1 = useRef<THREE.Mesh>(null!);
-  const ring2 = useRef<THREE.Mesh>(null!);
+const MinimalOrbit: React.FC = () => {
+  const satelliteRef = useRef<THREE.Mesh>(null!);
+  const orbitRadius = 1.62;
 
   useFrame((state) => {
-    const t = state.clock.elapsedTime;
-    if (ring1.current) {
-      ring1.current.rotation.x = Math.sin(t * 0.35) * 0.6 + 1.2;
-      ring1.current.rotation.y = t * 0.28;
-    }
-    if (ring2.current) {
-      ring2.current.rotation.y = Math.cos(t * 0.25) * 0.7 - 0.5;
-      ring2.current.rotation.z = -t * 0.25;
+    const t = state.clock.elapsedTime * 0.7;
+    if (satelliteRef.current) {
+      satelliteRef.current.position.x = Math.cos(t) * orbitRadius;
+      satelliteRef.current.position.z = Math.sin(t) * orbitRadius;
     }
   });
 
   return (
-    <group>
-      <mesh ref={ring1}>
-        <torusGeometry args={[1.9, 0.018, 16, 100]} />
-        <meshBasicMaterial color="#0ea5e9" transparent opacity={0.45} />
+    <group rotation={[Math.PI / 3.2, 0.25, -0.3]}>
+      {/* Ultra-Thin Orbital Track */}
+      <mesh>
+        <torusGeometry args={[orbitRadius, 0.007, 16, 120]} />
+        <meshBasicMaterial color="#38bdf8" transparent opacity={0.4} />
       </mesh>
-      <mesh ref={ring2}>
-        <torusGeometry args={[1.7, 0.015, 16, 100]} />
-        <meshBasicMaterial color="#818cf8" transparent opacity={0.4} />
+
+      {/* Glowing Satellite Milestone Node */}
+      <mesh ref={satelliteRef}>
+        <sphereGeometry args={[0.045, 16, 16]} />
+        <meshStandardMaterial
+          color="#38bdf8"
+          emissive="#38bdf8"
+          emissiveIntensity={1.2}
+          roughness={0.1}
+        />
       </mesh>
     </group>
   );
 };
 
 /* ──────────────────────────────────────────────────────
-   Core holographic sphere with dynamic distortion
+   Interactive Root with Pointer Parallax
    ────────────────────────────────────────────────────── */
-const CoreSphere: React.FC = () => {
-  const meshRef = useRef<THREE.Mesh>(null!);
+const InteractiveHub: React.FC = () => {
+  const groupRef = useRef<THREE.Group>(null!);
   const { pointer } = useThree();
 
-  useFrame((_, delta) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y += delta * 0.25;
-      // Buttery smooth lerp tilt
-      meshRef.current.rotation.x = THREE.MathUtils.lerp(
-        meshRef.current.rotation.x,
-        pointer.y * 0.35,
-        0.04
+  useFrame(() => {
+    if (groupRef.current) {
+      // Subtle smooth parallax tilt towards cursor
+      groupRef.current.rotation.x = THREE.MathUtils.lerp(
+        groupRef.current.rotation.x,
+        pointer.y * 0.25,
+        0.05
       );
-      meshRef.current.rotation.z = THREE.MathUtils.lerp(
-        meshRef.current.rotation.z,
-        pointer.x * 0.25,
-        0.04
+      groupRef.current.rotation.y = THREE.MathUtils.lerp(
+        groupRef.current.rotation.y,
+        pointer.x * 0.35,
+        0.05
       );
     }
   });
 
   return (
-    <Float speed={1.8} rotationIntensity={0.3} floatIntensity={0.5}>
-      <mesh ref={meshRef} scale={1.15}>
-        <icosahedronGeometry args={[1, 4]} />
-        <MeshDistortMaterial
-          color="#0284c7"
-          emissive="#38bdf8"
-          emissiveIntensity={0.6}
-          roughness={0.15}
-          metalness={0.85}
-          distort={0.3}
-          speed={2}
-        />
-      </mesh>
-    </Float>
+    <group ref={groupRef}>
+      <Float speed={1.4} rotationIntensity={0.2} floatIntensity={0.35}>
+        <InnerCore />
+        <GlassShell />
+        <MinimalOrbit />
+      </Float>
+    </group>
   );
 };
 
 /* ──────────────────────────────────────────────────────
-   Scene composition with OrbitControls & lighting
+   ThreeDScene Main Component
    ────────────────────────────────────────────────────── */
 const ThreeDScene: React.FC = () => {
   const { i18n } = useTranslation();
@@ -134,63 +160,37 @@ const ThreeDScene: React.FC = () => {
   return (
     <div className="relative w-full h-full select-none cursor-grab active:cursor-grabbing">
       <Canvas
-        camera={{ position: [0, 0, 4.8], fov: 46 }}
+        camera={{ position: [0, 0, 4.4], fov: 44 }}
         style={{ width: '100%', height: '100%' }}
         dpr={[1, 1.5]}
+        gl={{ antialias: true, alpha: true }}
       >
-        {/* Lights */}
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[4, 5, 4]} intensity={0.9} color="#ffffff" />
-        <pointLight position={[-4, -3, -3]} intensity={1.2} color="#0ea5e9" />
-        <pointLight position={[3, -2, 3]} intensity={0.9} color="#818cf8" />
+        {/* Soft Modern Lighting */}
+        <ambientLight intensity={0.65} />
+        <directionalLight position={[4, 5, 4]} intensity={1.1} color="#ffffff" />
+        <pointLight position={[-4, -3, -2]} intensity={1.2} color="#0284c7" />
+        <pointLight position={[3, -2, 3]} intensity={0.9} color="#6366f1" />
 
-        {/* 3D Elements */}
-        <CoreSphere />
-        <WireframeCage />
-        <GyroRings />
+        {/* 3D Interactive Hub */}
+        <InteractiveHub />
 
-        {/* Ambient sparkling stardust */}
-        <Sparkles count={45} scale={4} size={2.5} speed={0.35} color="#38bdf8" />
-
-        {/* Floating holographic pills positioned safely inside 3D frame */}
-        <FloatingBadge
-          position={[1.15, 0.95, 0.2]}
-          icon="⚡"
-          label={isEn ? 'Affordable' : 'परवडणारे दर'}
-        />
-        <FloatingBadge
-          position={[-1.15, 0.85, -0.2]}
-          icon="💻"
-          label={isEn ? 'Web & Apps' : 'वेब व ॲप'}
-        />
-        <FloatingBadge
-          position={[1.1, -0.95, -0.2]}
-          icon="🚀"
-          label={isEn ? 'Superfast' : 'सुपरफास्ट'}
-        />
-        <FloatingBadge
-          position={[-1.1, -0.85, 0.2]}
-          icon="📱"
-          label={isEn ? 'Mobile First' : 'मोबाईल फर्स्ट'}
-        />
-
-        {/* Controls - allow user to freely drag and rotate 360 degrees */}
+        {/* OrbitControls with Gentle Damping */}
         <OrbitControls
           enableZoom={false}
           enablePan={false}
           autoRotate
-          autoRotateSpeed={1.0}
-          dampingFactor={0.05}
+          autoRotateSpeed={0.8}
+          dampingFactor={0.06}
           enableDamping
-          maxPolarAngle={Math.PI / 1.5}
-          minPolarAngle={Math.PI / 3}
+          maxPolarAngle={Math.PI / 1.6}
+          minPolarAngle={Math.PI / 2.8}
         />
       </Canvas>
 
-      {/* Interactive Drag Hint */}
-      <div className="pointer-events-none absolute bottom-2 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-white/80 dark:bg-gray-900/70 backdrop-blur-md border border-slate-200 dark:border-white/10 text-[11px] font-medium text-slate-600 dark:text-gray-400 flex items-center gap-1.5 shadow-sm transition-colors duration-300">
-        <span>👆</span>
-        <span>{isEn ? 'Drag to rotate 3D core' : 'फिरवून ३D कोर पहा'}</span>
+      {/* Minimal Interactive Hint */}
+      <div className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-white/70 dark:bg-gray-950/70 backdrop-blur-md border border-slate-200/80 dark:border-white/10 text-[11px] font-medium text-slate-500 dark:text-gray-400 flex items-center gap-1.5 shadow-sm transition-colors duration-300">
+        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+        <span>{isEn ? 'Drag to inspect 3D core' : 'फिरवून ३D कोर पहा'}</span>
       </div>
     </div>
   );

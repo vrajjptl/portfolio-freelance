@@ -10,8 +10,8 @@ const Hero: React.FC = () => {
   const waNumber = '917414912464';
   const defaultText =
     i18n.language === 'mr'
-      ? 'नमस्कार विराज, मला माझ्या व्यवसायासाठी वेबसाईट/ॲप हवी आहे. अधिक माहिती हवी होती.'
-      : 'Hi Viraj, I want a website/app for my business. I would like to discuss details.';
+      ? 'नमस्कार DeliverNow, मला माझ्या व्यवसायासाठी वेबसाईट/ॲप हवी आहे. अधिक माहिती हवी होती.'
+      : 'Hi DeliverNow, I want a website/app for my business. I would like to discuss details.';
   const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(defaultText)}`;
   const telLink = 'tel:+917414912464';
   const [webglSupported, setWebglSupported] = useState(true);

@@ -7,8 +7,8 @@ const MobileBottomDock: React.FC = () => {
   const { i18n } = useTranslation();
   const waText =
     i18n.language === 'mr'
-      ? 'नमस्कार विराज, मला माझ्या व्यवसायासाठी वेबसाईट/ॲप हवी आहे.'
-      : 'Hi Viraj, I want a website/app for my business.';
+      ? 'नमस्कार DeliverNow, मला माझ्या व्यवसायासाठी वेबसाईट/ॲप हवी आहे.'
+      : 'Hi DeliverNow, I want a website/app for my business.';
   const waLink = `https://wa.me/917414912464?text=${encodeURIComponent(waText)}`;
   const telLink = 'tel:+917414912464';
 

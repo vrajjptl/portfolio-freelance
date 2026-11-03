@@ -167,15 +167,15 @@ const Contact: React.FC = () => {
 
     const text =
       i18n.language === 'mr'
-        ? `नमस्कार विराज,\nनाव: ${cleanName || 'माहिती नाही'}\nमोबाईल: ${cleanPhone || 'माहिती नाही'}\nसेवा: ${cleanService || 'वेबसाईट/ॲप/POS'}\nमाहिती: ${cleanMessage || 'मला संपर्क करावा.'}`
-        : `Hi Viraj,\nName: ${cleanName || 'Not provided'}\nPhone: ${cleanPhone || 'Not provided'}\nNeed: ${cleanService || 'Website/App/POS'}\nDetails: ${cleanMessage || 'Please contact me.'}`;
+        ? `नमस्कार DeliverNow,\nनाव: ${cleanName || 'माहिती नाही'}\nमोबाईल: ${cleanPhone || 'माहिती नाही'}\nसेवा: ${cleanService || 'वेबसाईट/ॲप/POS'}\nमाहिती: ${cleanMessage || 'मला संपर्क करावा.'}`
+        : `Hi DeliverNow,\nName: ${cleanName || 'Not provided'}\nPhone: ${cleanPhone || 'Not provided'}\nNeed: ${cleanService || 'Website/App/POS'}\nDetails: ${cleanMessage || 'Please contact me.'}`;
     window.open(`https://wa.me/917414912464?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
   };
 
   const defaultWALinkText =
     i18n.language === 'mr'
-      ? 'नमस्कार विराज, मला माझ्या व्यवसायासाठी वेबसाईट/ॲप हवी आहे. मोफत सल्ला हवा होता.'
-      : 'Hi Viraj, I would like to consult with you regarding a digital project for my business.';
+      ? 'नमस्कार DeliverNow, मला माझ्या व्यवसायासाठी वेबसाईट/ॲप हवी आहे. मोफत सल्ला हवा होता.'
+      : 'Hi DeliverNow, I would like to consult with you regarding a digital project for my business.';
   const waLink = `https://wa.me/917414912464?text=${encodeURIComponent(defaultWALinkText)}`;
   const telLink = 'tel:+917414912464';
   const mailtoLink = 'mailto:vrajpatil9891@gmail.com';

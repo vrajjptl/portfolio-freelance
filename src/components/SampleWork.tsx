@@ -63,8 +63,8 @@ const SampleWork: React.FC = () => {
   const getDiscussLink = (projectName: string) => {
     const text =
       i18n.language === 'mr'
-        ? `नमस्कार विराज, मी तुमच्या पोर्टफोलिओवर "${projectName}" हा डेमो प्रकल्प पाहिला. मला माझ्या व्यवसायासाठी असाच प्रोजेक्ट बनवून हवा आहे.`
-        : `Hi Viraj, I reviewed your "${projectName}" demo project on your portfolio. Can you build something similar for my business?`;
+        ? `नमस्कार DeliverNow, मी DeliverNow वरील "${projectName}" हा डेमो प्रकल्प पाहिला. मला माझ्या व्यवसायासाठी असाच प्रकल्प बनवून हवा आहे.`
+        : `Hi DeliverNow, I reviewed your "${projectName}" demo project. Can DeliverNow build something similar for my business?`;
     return `https://wa.me/917414912464?text=${encodeURIComponent(text)}`;
   };
 

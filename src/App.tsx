@@ -39,9 +39,9 @@ function App() {
   };
 
   const navLinks = [
-    { href: '#problems', label: t('nav.problems') },
     { href: '#services', label: t('nav.services') },
     { href: '#projects', label: t('nav.projects') },
+    { href: '#how-it-works', label: t('nav.howItWorks') },
     { href: '#pricing', label: t('nav.pricing') },
     { href: '#about', label: t('nav.about') },
     { href: '#faq', label: t('nav.faq') },
@@ -70,11 +70,11 @@ function App() {
               className="flex items-center gap-3 group focus:outline-none"
             >
               <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white font-extrabold text-lg shadow-md shadow-cyan-500/30 group-hover:scale-105 transition-transform">
-                V
+                D
               </div>
               <div className="flex flex-col text-left">
-                <span className="text-sm font-bold text-slate-900 dark:text-gray-100 group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors leading-tight">
-                  Viraj Patil
+                <span className="text-sm font-bold text-slate-900 dark:text-gray-100 group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors leading-tight tracking-tight">
+                  DeliverNow
                 </span>
                 <span className="text-[11px] text-slate-500 dark:text-gray-400 font-medium flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse"></span>

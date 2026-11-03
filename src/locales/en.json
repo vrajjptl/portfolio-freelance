@@ -1,179 +1,104 @@
 {
   "nav": {
-    "problems": "Problems & Solutions",
     "services": "Services",
     "projects": "Demo Projects",
-    "pricing": "Packages",
-    "about": "About Viraj",
-    "whyMe": "Agency vs Me",
     "howItWorks": "Process",
+    "pricing": "Packages",
+    "about": "About Us",
     "faq": "FAQ",
     "contact": "Contact",
-    "available": "Available for new projects",
-    "talk": "Direct Contact"
+    "available": "Available for projects",
+    "talk": "Contact Us"
   },
   "hero": {
-    "badge": "Affordable Digital Solutions for Small Businesses & Startups",
-    "ratingBadge": "Direct Developer • Honest Pricing",
-    "title": "Grow your business online, at a fixed and fair price",
-    "subtitle": "Superfast mobile websites, store billing software, and custom apps designed for retail shops, agro centers, clinics, and local traders in rural & semi-urban areas. No confusing jargon, 100% transparent delivery.",
+    "badge": "DeliverNow — Modern Digital Solutions for Growing Businesses",
+    "ratingBadge": "Direct Team • Fast Turnaround • Honest Service",
+    "title": "Grow Your Business Online with DeliverNow",
+    "subtitle": "Superfast mobile websites, counter billing POS software, and custom mobile apps designed for retail shops, clinics, agro stores, and local businesses. Zero bloat, 100% transparent delivery.",
     "ctaWhatsApp": "Free WhatsApp Consultation",
     "ctaEstimate": "Explore Packages ↓",
-    "ctaCall": "Call: +91 7414912464",
-    "ctaServices": "Explore Services",
+    "ctaCall": "Call DeliverNow",
     "stats": {
       "exp": "3+ Years Experience",
-      "expSub": "Full-Stack Software Engineer",
+      "expSub": "Full-Stack Software Solutions",
+      "speed": "Fast Turnaround",
+      "speedSub": "Ready in 3 to 10 Days",
       "pricing": "Affordable",
       "pricingSub": "Clear custom quote, zero hidden fees",
-      "support": "Direct Developer",
-      "supportSub": "No Agency Sales Reps or Middlemen",
-      "speed": "Fast Turnaround",
-      "speedSub": "Live in 3 to 10 Days"
-    }
-  },
-  "problems": {
-    "badge": "Do You Face These Bottlenecks?",
-    "title": "3 Common Digital Roadblocks for Small Businesses",
-    "subtitle": "Over 90% of local traders and shop owners lose customers because of these 3 hurdles:",
-    "item1": {
-      "title": "1. Customers Can't Find Your Shop on Google",
-      "desc": "New locals or passing travelers search Google Maps for 'nearest shop/clinic'. Without an active listing, they head straight to your competitors.",
-      "impact": "Losing 15 to 30 potential customers every month."
-    },
-    "item2": {
-      "title": "2. Billing, Accounts, and Ledgers are Still on Paper",
-      "desc": "Manual notebooks cause calculation errors, lost pages, and customers don't get printed receipts. Reconciling daily registers wastes 1-2 hours every evening.",
-      "impact": "Stuck credit (udhari) and massive time waste."
-    },
-    "item3": {
-      "title": "3. Big IT Agencies Quote ₹50,000+ with Complex Jargon",
-      "desc": "City agencies have large office overheads and project managers. They quote exorbitant rates and communicate in technical terms that don't solve your practical problem.",
-      "impact": "Budget blowouts with no tangible local results."
-    },
-    "solutionBadge": "The Simple, Affordable Fix",
-    "solutionTitle": "Viraj Patil — Your Personal Digital Partner",
-    "solutionCTA": "View My Services"
-  },
-  "industries": {
-    "badge": "Who Is This For?",
-    "title": "Businesses I Specialize In",
-    "subtitle": "Does your business fall under any of these? See what we build for you:",
-    "kirana": {
-      "title": "Grocery & Kirana Store",
-      "solution": "WhatsApp order catalog and fast thermal billing receipt software.",
-      "example": "Kirana POS"
-    },
-    "agro": {
-      "title": "Agro Center & Fertilizers",
-      "solution": "Live seed & fertilizer rates with instant stock WhatsApp updates for farmers.",
-      "example": "Agro Catalog"
-    },
-    "clinic": {
-      "title": "Clinics, Doctors & Labs",
-      "solution": "OPD token booking system, clinic timings, and direct Google Maps navigation.",
-      "example": "Clinic Portal"
-    },
-    "dairy": {
-      "title": "Dairy & Milk Collection",
-      "solution": "Daily milk collection ledger, fat rate cards, and automated SMS receipts.",
-      "example": "Dairy System"
-    },
-    "tailor": {
-      "title": "Tailoring, Clothes & Boutique",
-      "solution": "Design showcase gallery, customer measurement records, and order tracking.",
-      "example": "Boutique Showcase"
-    },
-    "school": {
-      "title": "Schools & Coaching Classes",
-      "solution": "Admission inquiry forms, fee ledger, exam results, and digital notice board.",
-      "example": "Class Portal"
+      "support": "Dedicated Team",
+      "supportSub": "Direct contact with zero middlemen"
     }
   },
   "services": {
-    "badge": "Service Catalog",
-    "title": "What I Can Build For You",
-    "subtitle": "Pick only what your business genuinely needs. No bloated packages or hidden upsells.",
+    "badge": "Our Services",
+    "title": "What DeliverNow Builds For You",
+    "subtitle": "Select the exact solution your business needs. No bloated packages or hidden upsells.",
     "items": [
       {
         "name": "Business Website",
         "tag": "Most Popular",
         "shortDesc": "Modern, lightweight website that loads in under 2 seconds even on slow mobile internet.",
-        "bullet1": "Guaranteed Google Maps & Search listing",
+        "bullet1": "Guaranteed Google Maps & local Search listing",
         "bullet2": "Direct 1-click WhatsApp order button for customers"
       },
       {
         "name": "Shop Billing POS Software",
-        "tag": "Best for Retail",
-        "shortDesc": "Clean desktop software for fast item scanning and instant thermal receipt printing.",
-        "bullet1": "Works with 2-inch and 3-inch thermal printers seamlessly",
-        "bullet2": "Daily profit/loss reporting and customer credit ledger"
+        "tag": "Retail & Counters",
+        "shortDesc": "Clean desktop software for barcode scanning and instant thermal receipt printing.",
+        "bullet1": "Offline-first architecture (works without internet)",
+        "bullet2": "Daily sales, profit reports, and customer credit ledger"
       },
       {
-        "name": "Mobile Android App",
+        "name": "Android Mobile App",
         "tag": "Store in Their Pocket",
-        "shortDesc": "Fast and lightweight Android application that runs smoothly on low-budget smartphones.",
-        "bullet1": "Send direct push notifications to your customers",
-        "bullet2": "Offline support — basic functions work without internet"
+        "shortDesc": "Fast, lightweight Android application that runs smoothly on low-budget smartphones.",
+        "bullet1": "Send direct push notifications and updates to customers",
+        "bullet2": "Accept orders and bookings directly from their mobile phone"
       },
       {
-        "name": "Online Product Catalog",
-        "tag": "Boost Sales",
-        "shortDesc": "Showcase your full inventory and updated rates directly on customer phones.",
-        "bullet1": "Customers select items and send orders directly via WhatsApp",
-        "bullet2": "Easy for you to update prices or stock anytime"
-      },
-      {
-        "name": "Google Business & Local SEO",
-        "tag": "Get Local Leads",
-        "shortDesc": "Ensure your shop appears at the top when people in your town search on Google.",
-        "bullet1": "Complete 5-star Google Business profile verification",
-        "bullet2": "Photos, opening hours, exact GPS location, and direct call button"
-      },
-      {
-        "name": "WhatsApp Automation & Bot",
-        "tag": "Save Time",
-        "shortDesc": "Auto-respond to customer questions even when your shop is closed or you are busy.",
-        "bullet1": "Automatically sends shop address, hours, and catalog menu",
-        "bullet2": "Never lose an inquiry while attending to in-store customers"
+        "name": "Business Automation & WhatsApp Bot",
+        "tag": "Save Hours Daily",
+        "shortDesc": "Auto-respond to customer questions even when your counter is busy or shop is closed.",
+        "bullet1": "Automatically share store hours, address, and live catalog",
+        "bullet2": "Never miss an inquiry while serving in-store customers"
       }
     ]
   },
   "sampleWork": {
     "badge": "Interactive Demos",
-    "title": "Concept & Demo Projects",
-    "subtitle": "Explore these interactive prototypes to see the exact interface and quality you receive:",
-    "disclaimer": "Note: These projects are interactive live concept demos built to illustrate real-world functionality.",
-    "viewDemo": "View Live Demo (Interactive Preview)",
-    "requestSimilar": "Build Something Similar For Me"
+    "title": "DeliverNow Concept Prototypes",
+    "subtitle": "Explore these live interactive prototypes to inspect interface quality and responsiveness:",
+    "disclaimer": "Note: These projects are interactive concept prototypes illustrating real-world functionality.",
+    "viewDemo": "View Live Demo",
+    "requestSimilar": "Build Something Similar For Us"
   },
   "howItWorks": {
-    "title": "A Transparent 4-Step Process",
-    "subtitle": "No technical friction. Clear deadlines, upfront quotes, and zero surprises.",
+    "title": "DeliverNow Transparent 4-Step Process",
+    "subtitle": "No technical friction. Clear deadlines, milestone updates, and zero surprises.",
     "steps": [
       {
         "step": "01",
         "title": "Free Discovery Call",
         "timeline": "Day 1",
-        "desc": "Understanding your daily store workflow, bottlenecks and honest budget over phone or WhatsApp."
+        "desc": "Understanding your daily store workflow, bottlenecks, and requirements over phone or WhatsApp."
       },
       {
         "step": "02",
-        "title": "Visual Preview Mockup",
+        "title": "Visual Prototype",
         "timeline": "Day 2",
-        "desc": "Showing you an interactive prototype of how your website/software will look before coding begins."
+        "desc": "Reviewing an interactive visual mockup so you can see how your system looks before build."
       },
       {
         "step": "03",
-        "title": "Development & Revisions",
+        "title": "Build & Refinements",
         "timeline": "Days 3 to 6",
-        "desc": "Building the full system with 2 complimentary revision cycles to match your preferences."
+        "desc": "Developing the complete system with complimentary revision cycles to match your preferences."
       },
       {
         "step": "04",
         "title": "Live Launch & Training",
         "timeline": "Day 7+",
-        "desc": "Deploying live on Google with a personal 1-on-1 walkthrough so you can operate it confidently."
+        "desc": "Deploying live on Google with a personal walkthrough so you and your team operate it confidently."
       }
     ]
   },
@@ -225,107 +150,54 @@
       "domainHosting": "Domain and hosting are registered under your name, giving you 100% ownership and full credentials.",
       "paymentSchedule": "Milestones agreed upfront before work begins. Clear payment terms with no surprise invoices.",
       "revisions": "Includes complimentary revision cycles to make sure you are completely satisfied with the result.",
-      "gst": "Direct developer collaboration — zero agency overheads or sales commission markups."
+      "gst": "Direct DeliverNow team collaboration — zero agency overheads or sales commission markups."
     }
   },
   "about": {
-    "badge": "About Me",
-    "title": "I'm Viraj Patil — A Dedicated Developer From Rural Maharashtra",
-    "para1": "Coming from a rural background in Maharashtra, I have spent the last 3+ years working as a full-stack software engineer. I saw firsthand how city agencies overcharge small shopkeepers and local clinics for basic websites.",
-    "para2": "My mission is simple: provide farmers, grocery stores, doctors, and local traders with high quality, reliable digital tools at fair and honest prices, without technical jargon.",
-    "para3": "Even if you have never used a computer before, do not worry. I build everything to be dead-simple and guide you personally in your preferred language."
-  },
-  "comparison": {
-    "title": "Big IT Agencies vs. Working with Viraj",
-    "subtitle": "See how working directly with an independent engineer saves you money and time:",
-    "agencyLabel": "Large IT Agencies / Firms",
-    "meLabel": "Viraj Patil (Direct Developer)",
-    "items": [
-      {
-        "metric": "Budget & Cost",
-        "agency": "Expensive fee structures with bloated agency overheads",
-        "me": "Fair, affordable and honest quotes with zero surprises"
-      },
-      {
-        "metric": "Delivery Timeline",
-        "agency": "1 to 2 months (bureaucracy and long meeting chains)",
-        "me": "Live in 3 to 10 days"
-      },
-      {
-        "metric": "Language & Jargon",
-        "agency": "Complicated technical buzzwords with little patience to explain",
-        "me": "Clear, patient communication in Marathi or English"
-      },
-      {
-        "metric": "Support & Access",
-        "agency": "Must submit support tickets; takes days to resolve",
-        "me": "Direct WhatsApp or phone call to my personal number"
-      }
-    ]
-  },
-  "trust": {
-    "badge": "Integrity & Commitment",
-    "title": "4 Pillars of Client Trust",
-    "subtitle": "So you can work together with complete peace of mind:",
-    "timelines": {
-      "title": "On-Time Delivery",
-      "desc": "Projects delivered within the promised timeframe. Daily progress updates so you are never left guessing."
-    },
-    "refund": {
-      "title": "Satisfaction Guarantee",
-      "desc": "If the initial mockup does not align with your vision, we make revisions until it fits your exact needs."
-    },
-    "privacy": {
-      "title": "100% Data Confidentiality",
-      "desc": "Your customer databases, sales figures, and contact lists remain private and will never be shared."
-    },
-    "support": {
-      "title": "Post-Launch Guidance",
-      "desc": "We don't disappear after handover. Ongoing phone and WhatsApp assistance is always available."
-    }
+    "badge": "About DeliverNow",
+    "title": "Your Dedicated Technology Partner for Local & Growing Businesses",
+    "para1": "DeliverNow is a modern digital solutions studio established to empower retail shops, agro centers, clinics, and local enterprises with high-performance software, websites, and apps.",
+    "para2": "Our mission is simple: eliminate agency bloat and tech jargon, delivering fast, durable, and practical digital tools that bring customers to your counter and save you hours every day.",
+    "para3": "Even if you have never managed a digital system before, DeliverNow guides you through every milestone and provides complete 1-on-1 operational training."
   },
   "faq": {
     "title": "Frequently Asked Questions",
-    "subtitle": "Clear, straightforward answers to common questions:",
+    "subtitle": "Clear, straightforward answers about DeliverNow services:",
     "items": [
       {
-        "q": "Will this website or app work smoothly on my budget ₹5,000 to ₹7,000 Android phone?",
-        "a": "Yes, 100%! All sites and applications I build are specifically optimized for budget Android smartphones and load in under 2 seconds even on slow 2G/3G/4G rural networks."
+        "q": "Will this website or app work smoothly on budget Android phones?",
+        "a": "Yes, 100%! All DeliverNow digital systems are engineered specifically for budget smartphones and load in under 2 seconds even on slow mobile data networks."
       },
       {
-        "q": "I don't know computers or English. Can I manage this easily?",
-        "a": "Absolutely! You don't need any technical skills. Everything is built with clear buttons and can be operated in Marathi or English. After launch, I provide a personal 1-on-1 walkthrough over phone or video call."
+        "q": "We have no prior experience with software. Can our staff operate it?",
+        "a": "Absolutely. Our counter POS software and web tools are designed to be dead-simple and intuitive. We personally train you and your team during onboarding."
       },
       {
-        "q": "What are domain and hosting, and what do they cost every year?",
-        "a": "A domain is your shop's online name (like yourshop.in), and hosting is the secure cloud server where your files live. A .in domain costs approx. ₹600-800/year, and hosting is approx. ₹1,200 to ₹1,800/year. Free cloud tier options are also available."
+        "q": "How do we track project updates during development?",
+        "a": "The DeliverNow team communicates directly with you via WhatsApp and phone calls with live milestone previews so you are always in complete control."
       },
       {
-        "q": "What do I need to provide to start, and what are the payment terms?",
-        "a": "Just send your shop name, address, phone number, and a few photos of your store/products via WhatsApp. 50% advance to begin work, and the remaining 50% via PhonePe/GPay only after the project is complete and approved by you."
-      },
-      {
-        "q": "If something stops working later, who helps me fix it?",
-        "a": "Viraj Patil directly! You will never have to deal with automated bots or waiting on customer care. Just call or message my personal WhatsApp number."
+        "q": "What kind of support is provided after launch?",
+        "a": "We provide dedicated ongoing technical maintenance and prompt assistance via phone and WhatsApp whenever you need tweaks or guidance."
       }
     ]
   },
   "contact": {
-    "title": "Let's Modernize Your Business Today",
-    "subtitle": "Reach out directly for a free consultation or custom advice.",
-    "directText": "I respond personally via phone or WhatsApp. No middlemen or sales reps.",
+    "title": "Get In Touch with DeliverNow",
+    "subtitle": "Start a free consultation today to discuss the ideal digital setup for your business.",
+    "directText": "Call us directly or tap below to start a quick chat on WhatsApp.",
     "form": {
       "name": "Your Name",
-      "phone": "Mobile Number (WhatsApp)",
-      "service": "Service Required",
-      "message": "Tell me a little about your business...",
+      "phone": "Phone Number",
+      "service": "Service Needed",
+      "message": "Brief details about your business...",
       "submit": "Send Inquiry",
-      "quickWhatsApp": "Chat Directly on WhatsApp",
-      "success": "Thank you! I have received your inquiry and will contact you within 2 hours."
+      "quickWhatsApp": "Or Send via WhatsApp",
+      "success": "Thank you! Your inquiry has been received. The DeliverNow team will reach out promptly."
     }
   },
   "footer": {
-    "text": "Honest, high quality digital solutions built for retail shopkeepers, clinics, and local businesses.",
-    "location": "Maharashtra, India"
+    "text": "DeliverNow — Fast, modern websites, POS software, and mobile apps built for growing businesses.",
+    "location": "Maharashtra, India (Remote & Online Available)"
   }
 }

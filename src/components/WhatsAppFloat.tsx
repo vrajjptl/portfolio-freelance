@@ -7,8 +7,8 @@ const WhatsAppFloat: React.FC = () => {
   const [hovered, setHovered] = useState(false);
   const waText =
     i18n.language === 'mr'
-      ? 'नमस्कार विराज, मला माझ्या व्यवसायासाठी वेबसाईट/ॲप हवी आहे. मोफत सल्ला हवा होता.'
-      : 'Hi Viraj, I would like to consult with you regarding a digital project for my business.';
+      ? 'नमस्कार DeliverNow, मला माझ्या व्यवसायासाठी वेबसाईट/ॲप हवी आहे. मोफत सल्ला हवा होता.'
+      : 'Hi DeliverNow, I would like to consult with you regarding a digital project for my business.';
   const waLink = `https://wa.me/917414912464?text=${encodeURIComponent(waText)}`;
 
   return (
@@ -16,7 +16,7 @@ const WhatsAppFloat: React.FC = () => {
       {/* Floating tooltip badge */}
       {hovered && (
         <div className="hidden sm:block px-3.5 py-1.5 rounded-full bg-slate-900/95 dark:bg-gray-900/95 backdrop-blur-md border border-white/10 text-xs font-bold text-emerald-400 shadow-xl shadow-black/40 animate-fade-in-up whitespace-nowrap">
-          {i18n.language === 'mr' ? 'विराज यांच्याशी WhatsApp वर बोला' : 'Chat with Viraj on WhatsApp'}
+          {i18n.language === 'mr' ? 'DeliverNow टीमशी WhatsApp वर बोला' : 'Chat with DeliverNow on WhatsApp'}
         </div>
       )}
 
@@ -25,7 +25,7 @@ const WhatsAppFloat: React.FC = () => {
         href={waLink}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp with Viraj Patil"
+        aria-label="Chat on WhatsApp with DeliverNow"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         className="relative group w-14 h-14 rounded-full bg-gradient-to-tr from-emerald-500 to-green-600 flex items-center justify-center text-white shadow-xl shadow-green-500/35 hover:shadow-green-500/60 hover:scale-110 active:scale-95 transition-all duration-300"

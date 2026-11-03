@@ -29,17 +29,17 @@
 
   <!-- Logo Circle -->
   <circle cx="120" cy="315" r="50" fill="url(#accent)" opacity="0.9"/>
-  <text x="120" y="330" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="48" fill="white">V</text>
+  <text x="120" y="332" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="52" fill="white">D</text>
 
   <!-- Name -->
-  <text x="200" y="260" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="56" fill="white">Viraj Patil</text>
+  <text x="200" y="260" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="56" fill="white">DeliverNow</text>
 
   <!-- Role -->
-  <text x="200" y="310" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="28" fill="#38bdf8">Full-Stack Developer</text>
+  <text x="200" y="310" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="28" fill="#38bdf8">Digital Solutions &amp; Software Studio</text>
 
   <!-- Tagline -->
-  <text x="200" y="370" font-family="system-ui, -apple-system, sans-serif" font-weight="400" font-size="22" fill="#94a3b8">Affordable Websites, Apps &amp; Software</text>
-  <text x="200" y="400" font-family="system-ui, -apple-system, sans-serif" font-weight="400" font-size="22" fill="#94a3b8">for Indian Small Businesses</text>
+  <text x="200" y="370" font-family="system-ui, -apple-system, sans-serif" font-weight="400" font-size="22" fill="#94a3b8">Fast Websites, POS Systems &amp; Mobile Apps</text>
+  <text x="200" y="400" font-family="system-ui, -apple-system, sans-serif" font-weight="400" font-size="22" fill="#94a3b8">Built for Growing Businesses in India</text>
 
   <!-- Services Pills -->
   <rect x="200" y="440" width="140" height="36" rx="18" fill="#0ea5e9" fill-opacity="0.15" stroke="#0ea5e9" stroke-opacity="0.4"/>
@@ -48,22 +48,22 @@
   <rect x="360" y="440" width="160" height="36" rx="18" fill="#6366f1" fill-opacity="0.15" stroke="#6366f1" stroke-opacity="0.4"/>
   <text x="440" y="463" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="600" font-size="14" fill="#a5b4fc">📱 Mobile Apps</text>
 
-  <rect x="540" y="440" width="140" height="36" rx="18" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-opacity="0.4"/>
-  <text x="610" y="463" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="600" font-size="14" fill="#6ee7b7">🧾 POS / Billing</text>
+  <rect x="540" y="440" width="160" height="36" rx="18" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-opacity="0.4"/>
+  <text x="620" y="463" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="600" font-size="14" fill="#6ee7b7">🧾 POS / Billing</text>
 
   <!-- Contact -->
   <text x="200" y="540" font-family="system-ui, sans-serif" font-weight="500" font-size="18" fill="#64748b">📞 +91 7414912464  •  📧 vrajpatil9891@gmail.com</text>
 
   <!-- Marathi text -->
-  <text x="200" y="580" font-family="system-ui, sans-serif" font-weight="600" font-size="20" fill="#0ea5e9" opacity="0.8">परवडणारी वेबसाईट आणि ॲप • महाराष्ट्र</text>
+  <text x="200" y="580" font-family="system-ui, sans-serif" font-weight="600" font-size="20" fill="#0ea5e9" opacity="0.8">DeliverNow – परवडणारी वेबसाईट, ॲप आणि सॉफ्टवेअर सोल्यूशन्स</text>
 
   <!-- Right side decoration -->
   <rect x="850" y="180" width="260" height="280" rx="20" fill="white" fill-opacity="0.03" stroke="white" stroke-opacity="0.08"/>
-  <text x="980" y="240" text-anchor="middle" font-family="monospace" font-weight="600" font-size="14" fill="#64748b">&lt;code /&gt;</text>
-  <text x="900" y="290" font-family="monospace" font-size="13" fill="#38bdf8">const dev = {</text>
-  <text x="920" y="315" font-family="monospace" font-size="13" fill="#94a3b8">name: "Viraj",</text>
-  <text x="920" y="340" font-family="monospace" font-size="13" fill="#94a3b8">stack: "Full-Stack",</text>
-  <text x="920" y="365" font-family="monospace" font-size="13" fill="#10b981">available: true,</text>
-  <text x="920" y="390" font-family="monospace" font-size="13" fill="#94a3b8">pricing: "₹4,999+"</text>
-  <text x="900" y="415" font-family="monospace" font-size="13" fill="#38bdf8">};</text>
+  <text x="980" y="240" text-anchor="middle" font-family="monospace" font-weight="600" font-size="14" fill="#64748b">&lt;DeliverNow /&gt;</text>
+  <text x="890" y="290" font-family="monospace" font-size="13" fill="#38bdf8">const deliverNow = {</text>
+  <text x="910" y="315" font-family="monospace" font-size="13" fill="#94a3b8">speed: "Fast",</text>
+  <text x="910" y="340" font-family="monospace" font-size="13" fill="#94a3b8">solutions: "Modern",</text>
+  <text x="910" y="365" font-family="monospace" font-size="13" fill="#10b981">available: true,</text>
+  <text x="910" y="390" font-family="monospace" font-size="13" fill="#94a3b8">quote: "Transparent"</text>
+  <text x="890" y="415" font-family="monospace" font-size="13" fill="#38bdf8">};</text>
 </svg>

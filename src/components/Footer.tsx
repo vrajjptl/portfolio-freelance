@@ -52,9 +52,9 @@ const Footer: React.FC = () => {
         <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-2">
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-cyan-500 animate-pulse" />
-            <span className="text-lg font-bold text-slate-900 dark:text-gray-100">Viraj Patil</span>
+            <span className="text-lg font-bold text-slate-900 dark:text-gray-100">DeliverNow</span>
             <span className="text-xs px-2.5 py-0.5 rounded-full bg-cyan-50 dark:bg-cyan-950 border border-cyan-200 dark:border-cyan-500/30 text-cyan-700 dark:text-cyan-400 font-mono">
-              Full-Stack Developer
+              Digital Solutions
             </span>
           </div>
           <p className="text-xs text-slate-500 dark:text-gray-400 max-w-md">
@@ -102,7 +102,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="text-[11px] font-mono text-slate-400 dark:text-gray-500">
-          © 2026 Viraj Patil. All rights reserved.
+          © 2026 DeliverNow. All rights reserved.
         </div>
       </div>
     </footer>

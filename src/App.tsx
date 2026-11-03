@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import HomePage from './components/HomePage';
 import NotFound from './components/NotFound';
 import SmoothCursor from './components/SmoothCursor';
@@ -194,6 +195,7 @@ function App() {
         </main>
 
         <WhatsAppFloat />
+        <SpeedInsights />
       </div>
     </Router>
   );

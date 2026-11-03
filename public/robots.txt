@@ -1,0 +1,13 @@
+# robots.txt - Viraj Patil Freelance Portfolio
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://virajpatil-freelance.vercel.app/sitemap.xml
+
+# Crawl-delay for polite bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /

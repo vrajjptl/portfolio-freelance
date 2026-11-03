@@ -1,5 +1,5 @@
 // src/components/Contact.tsx
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   PhoneIcon,
@@ -9,19 +9,116 @@ import {
 } from '@heroicons/react/24/outline';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/20/solid';
 
+// ── Security Helpers ──────────────────────────────
+/** Strip HTML tags and trim whitespace to prevent XSS in stored/forwarded data */
+const sanitize = (str: string): string =>
+  str.replace(/<[^>]*>/g, '').replace(/[<>"'&]/g, '').trim();
+
+/** Basic phone validation: digits, spaces, +, - only, 10-15 chars */
+const isValidPhone = (phone: string): boolean =>
+  /^[\d\s+\-()]{10,15}$/.test(phone.trim());
+
+/** Basic name validation: letters, spaces, dots, 2-60 chars */
+const isValidName = (name: string): boolean =>
+  /^[\p{L}\p{M}\s.'-]{2,60}$/u.test(name.trim());
+
+/** Rate limiter: max N submissions within a time window */
+const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute
+const RATE_LIMIT_MAX = 3;
+const submissionTimestamps: number[] = [];
+
+const isRateLimited = (): boolean => {
+  const now = Date.now();
+  // Remove timestamps outside the window
+  while (submissionTimestamps.length > 0 && submissionTimestamps[0] < now - RATE_LIMIT_WINDOW_MS) {
+    submissionTimestamps.shift();
+  }
+  return submissionTimestamps.length >= RATE_LIMIT_MAX;
+};
+
+const recordSubmission = () => {
+  submissionTimestamps.push(Date.now());
+};
+
+// ── Component ─────────────────────────────────────
 const Contact: React.FC = () => {
   const { t, i18n } = useTranslation();
   const [form, setForm] = useState({ name: '', phone: '', service: '', message: '' });
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // Honeypot field for bot detection
+  const [honeypot, setHoneypot] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+    // Clear error on change
+    if (errors[name]) {
+      setErrors((prev) => {
+        const next = { ...prev };
+        delete next[name];
+        return next;
+      });
+    }
+  };
+
+  const validate = (): boolean => {
+    const newErrors: Record<string, string> = {};
+    const cleanName = sanitize(form.name);
+    const cleanPhone = sanitize(form.phone);
+    const cleanMessage = sanitize(form.message);
+
+    if (!cleanName || !isValidName(cleanName)) {
+      newErrors.name = i18n.language === 'mr' ? 'कृपया वैध नाव टाका (किमान २ अक्षरे)' : 'Please enter a valid name (at least 2 characters)';
+    }
+    if (!cleanPhone || !isValidPhone(cleanPhone)) {
+      newErrors.phone = i18n.language === 'mr' ? 'कृपया वैध मोबाईल नंबर टाका' : 'Please enter a valid phone number';
+    }
+    if (!cleanMessage || cleanMessage.length < 5) {
+      newErrors.message = i18n.language === 'mr' ? 'कृपया किमान ५ अक्षरांचा संदेश लिहा' : 'Please write at least 5 characters';
+    }
+    if (cleanMessage.length > 2000) {
+      newErrors.message = i18n.language === 'mr' ? 'संदेश जास्तीत जास्त २,००० अक्षरांचा असावा' : 'Message must be under 2,000 characters';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Bot detection: if honeypot is filled, silently discard
+    if (honeypot) {
+      setSent(true);
+      return;
+    }
+
+    // Client-side rate limiting
+    if (isRateLimited()) {
+      setErrors({
+        _form: i18n.language === 'mr'
+          ? 'कृपया थोडा वेळ थांबा आणि पुन्हा प्रयत्न करा.'
+          : 'Too many submissions. Please wait a moment and try again.',
+      });
+      return;
+    }
+
+    if (!validate()) return;
+
     setLoading(true);
+
+    // Sanitize all inputs before sending
+    const sanitizedData = {
+      name: sanitize(form.name),
+      phone: sanitize(form.phone),
+      service: sanitize(form.service),
+      message: sanitize(form.message),
+      _submitted_at: new Date().toISOString(),
+    };
 
     const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT?.trim();
     if (endpoint) {
@@ -29,23 +126,34 @@ const Contact: React.FC = () => {
         const res = await fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(form),
+          body: JSON.stringify(sanitizedData),
         });
         if (res.ok) {
+          recordSubmission();
           setSent(true);
         } else {
-          console.error('Contact submission failed', await res.text());
-          setSent(true);
+          console.error('Contact submission failed', res.status);
+          setErrors({
+            _form: i18n.language === 'mr'
+              ? 'काहीतरी चूक झाली. कृपया WhatsApp वर संपर्क करा.'
+              : 'Something went wrong. Please contact via WhatsApp.',
+          });
         }
-      } catch (err) {
-        console.error('Contact error', err);
-        setSent(true);
+      } catch {
+        console.error('Contact network error');
+        setErrors({
+          _form: i18n.language === 'mr'
+            ? 'नेटवर्क एरर. कृपया WhatsApp वर संपर्क करा.'
+            : 'Network error. Please contact via WhatsApp.',
+        });
       } finally {
         setLoading(false);
       }
     } else {
+      // No endpoint configured — log and show success
       setTimeout(() => {
-        console.log('Contact form submitted:', form);
+        console.log('Contact form submitted (no endpoint):', sanitizedData);
+        recordSubmission();
         setSent(true);
         setLoading(false);
       }, 500);
@@ -53,11 +161,16 @@ const Contact: React.FC = () => {
   };
 
   const sendDirectWhatsApp = () => {
+    const cleanName = sanitize(form.name);
+    const cleanPhone = sanitize(form.phone);
+    const cleanService = sanitize(form.service);
+    const cleanMessage = sanitize(form.message);
+
     const text =
       i18n.language === 'mr'
-        ? `नमस्कार विराज,\nनाव: ${form.name || 'माहिती नाही'}\nमोबाईल: ${form.phone || 'माहिती नाही'}\nसेवा: ${form.service || 'वेबसाईट/ॲप/POS'}\nमाहिती: ${form.message || 'मला संपर्क करावा.'}`
-        : `Hi Viraj,\nName: ${form.name || 'Not provided'}\nPhone: ${form.phone || 'Not provided'}\nNeed: ${form.service || 'Website/App/POS'}\nDetails: ${form.message || 'Please contact me.'}`;
-    window.open(`https://wa.me/917414912464?text=${encodeURIComponent(text)}`, '_blank');
+        ? `नमस्कार विराज,\nनाव: ${cleanName || 'माहिती नाही'}\nमोबाईल: ${cleanPhone || 'माहिती नाही'}\nसेवा: ${cleanService || 'वेबसाईट/ॲप/POS'}\nमाहिती: ${cleanMessage || 'मला संपर्क करावा.'}`
+        : `Hi Viraj,\nName: ${cleanName || 'Not provided'}\nPhone: ${cleanPhone || 'Not provided'}\nNeed: ${cleanService || 'Website/App/POS'}\nDetails: ${cleanMessage || 'Please contact me.'}`;
+    window.open(`https://wa.me/917414912464?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
   };
 
   const defaultWALinkText =
@@ -263,7 +376,7 @@ const Contact: React.FC = () => {
                       <span>→</span>
                     </button>
                     <button
-                      onClick={() => setSent(false)}
+                      onClick={() => { setSent(false); setForm({ name: '', phone: '', service: '', message: '' }); }}
                       className="px-5 py-3 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 text-xs font-semibold text-slate-700 dark:text-gray-200 transition-all"
                     >
                       {i18n.language === 'mr' ? 'दुसरा मेसेज पाठवा' : 'Send Another'}
@@ -271,47 +384,75 @@ const Contact: React.FC = () => {
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form ref={formRef} onSubmit={handleSubmit} className="space-y-5" noValidate>
+                  {/* Global form error */}
+                  {errors._form && (
+                    <div className="p-3 rounded-xl bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-500/30 text-xs font-semibold text-red-700 dark:text-red-300">
+                      ⚠️ {errors._form}
+                    </div>
+                  )}
+
+                  {/* Honeypot - invisible to humans, traps bots */}
+                  <div className="absolute -left-[9999px]" aria-hidden="true">
+                    <label htmlFor="website_url">Website</label>
+                    <input
+                      type="text"
+                      id="website_url"
+                      name="website_url"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                    />
+                  </div>
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     {/* Name */}
                     <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wider">
+                      <label htmlFor="contact-name" className="text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wider">
                         {t('contact.form.name')} *
                       </label>
                       <input
                         type="text"
+                        id="contact-name"
                         name="name"
                         required
+                        maxLength={60}
                         value={form.name}
                         onChange={handleChange}
                         placeholder="e.g. Ramesh Patil"
-                        className="w-full px-4 py-3 rounded-2xl bg-slate-50 dark:bg-gray-950/70 border border-slate-200 dark:border-white/10 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 text-sm text-slate-900 dark:text-gray-100 placeholder-slate-400 dark:placeholder-gray-500 outline-none transition-all"
+                        className={`w-full px-4 py-3 rounded-2xl bg-slate-50 dark:bg-gray-950/70 border ${errors.name ? 'border-red-400 dark:border-red-500' : 'border-slate-200 dark:border-white/10'} focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 text-sm text-slate-900 dark:text-gray-100 placeholder-slate-400 dark:placeholder-gray-500 outline-none transition-all`}
                       />
+                      {errors.name && <p className="text-[11px] text-red-500 font-medium">{errors.name}</p>}
                     </div>
 
                     {/* Phone */}
                     <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wider">
+                      <label htmlFor="contact-phone" className="text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wider">
                         {t('contact.form.phone')} *
                       </label>
                       <input
                         type="tel"
+                        id="contact-phone"
                         name="phone"
                         required
+                        maxLength={15}
                         value={form.phone}
                         onChange={handleChange}
                         placeholder="e.g. +91 9876543210"
-                        className="w-full px-4 py-3 rounded-2xl bg-slate-50 dark:bg-gray-950/70 border border-slate-200 dark:border-white/10 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 text-sm text-slate-900 dark:text-gray-100 placeholder-slate-400 dark:placeholder-gray-500 outline-none transition-all"
+                        className={`w-full px-4 py-3 rounded-2xl bg-slate-50 dark:bg-gray-950/70 border ${errors.phone ? 'border-red-400 dark:border-red-500' : 'border-slate-200 dark:border-white/10'} focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 text-sm text-slate-900 dark:text-gray-100 placeholder-slate-400 dark:placeholder-gray-500 outline-none transition-all`}
                       />
+                      {errors.phone && <p className="text-[11px] text-red-500 font-medium">{errors.phone}</p>}
                     </div>
                   </div>
 
                   {/* Service Needed Dropdown */}
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wider">
+                    <label htmlFor="contact-service" className="text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wider">
                       {t('contact.form.service')}
                     </label>
                     <select
+                      id="contact-service"
                       name="service"
                       value={form.service}
                       onChange={handleChange}
@@ -330,18 +471,22 @@ const Contact: React.FC = () => {
 
                   {/* Message */}
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wider">
+                    <label htmlFor="contact-message" className="text-xs font-semibold text-slate-700 dark:text-gray-300 uppercase tracking-wider">
                       Message / Project Details *
                     </label>
                     <textarea
+                      id="contact-message"
                       name="message"
                       rows={4}
                       required
+                      maxLength={2000}
                       value={form.message}
                       onChange={handleChange}
                       placeholder={t('contact.form.message')}
-                      className="w-full px-4 py-3 rounded-2xl bg-slate-50 dark:bg-gray-950/70 border border-slate-200 dark:border-white/10 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 text-sm text-slate-900 dark:text-gray-100 placeholder-slate-400 dark:placeholder-gray-500 outline-none transition-all resize-none"
+                      className={`w-full px-4 py-3 rounded-2xl bg-slate-50 dark:bg-gray-950/70 border ${errors.message ? 'border-red-400 dark:border-red-500' : 'border-slate-200 dark:border-white/10'} focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 text-sm text-slate-900 dark:text-gray-100 placeholder-slate-400 dark:placeholder-gray-500 outline-none transition-all resize-none`}
                     />
+                    {errors.message && <p className="text-[11px] text-red-500 font-medium">{errors.message}</p>}
+                    <p className="text-[10px] text-slate-400 dark:text-gray-500 text-right">{form.message.length}/2000</p>
                   </div>
 
                   {/* Submit Buttons */}

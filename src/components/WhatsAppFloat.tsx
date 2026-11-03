@@ -12,7 +12,7 @@ const WhatsAppFloat: React.FC = () => {
   const waLink = `https://wa.me/917414912464?text=${encodeURIComponent(waText)}`;
 
   return (
-    <aside aria-label="WhatsApp floating support" className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
+    <aside aria-label="WhatsApp floating support" className="hidden sm:flex fixed bottom-6 right-6 z-50 items-center gap-3">
       {/* Floating tooltip badge */}
       {hovered && (
         <div className="hidden sm:block px-3.5 py-1.5 rounded-full bg-slate-900/95 dark:bg-gray-900/95 backdrop-blur-md border border-white/10 text-xs font-bold text-emerald-400 shadow-xl shadow-black/40 animate-fade-in-up whitespace-nowrap">

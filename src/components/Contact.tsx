@@ -150,9 +150,8 @@ const Contact: React.FC = () => {
         setLoading(false);
       }
     } else {
-      // No endpoint configured — log and show success
+      // No endpoint configured — process locally and display confirmation
       setTimeout(() => {
-        console.log('Contact form submitted (no endpoint):', sanitizedData);
         recordSubmission();
         setSent(true);
         setLoading(false);

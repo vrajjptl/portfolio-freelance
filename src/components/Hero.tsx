@@ -1,5 +1,5 @@
 // src/components/Hero.tsx
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PhoneIcon } from '@heroicons/react/24/outline';
 
@@ -14,17 +14,6 @@ const Hero: React.FC = () => {
       : 'Hi DeliverNow, I want a website/app for my business. I would like to discuss details.';
   const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(defaultText)}`;
   const telLink = 'tel:+917414912464';
-  const [webglSupported, setWebglSupported] = useState(true);
-
-  useEffect(() => {
-    try {
-      const canvas = document.createElement('canvas');
-      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-      setWebglSupported(!!gl);
-    } catch {
-      setWebglSupported(false);
-    }
-  }, []);
 
   const scrollToPricing = () => {
     document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
@@ -134,36 +123,24 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Column: 3D Holographic Showcase */}
-        <div className="lg:col-span-5 w-full flex justify-center animate-fade-in-up delay-200">
-          <div className="relative w-full max-w-[460px] h-[360px] sm:h-[420px] rounded-3xl bg-white/80 dark:bg-gradient-to-b dark:from-white/[0.06] dark:to-transparent p-1 border border-slate-200/90 dark:border-white/10 shadow-2xl shadow-cyan-500/10 backdrop-blur-md overflow-hidden transition-colors duration-300">
-            {/* Ambient inner glow */}
-            <div className="absolute -top-20 -right-20 w-44 h-44 bg-cyan-500/15 dark:bg-cyan-500/20 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute -bottom-20 -left-20 w-44 h-44 bg-purple-500/15 dark:bg-purple-500/20 rounded-full blur-3xl pointer-events-none" />
+        {/* Right Column: Interactive Spatial Product Showcase */}
+        <div className="lg:col-span-5 w-full flex justify-center items-center animate-fade-in-up delay-200">
+          <div className="relative w-full max-w-[440px]">
+            {/* Ambient background glow */}
+            <div className="absolute -top-10 -right-10 w-60 h-60 bg-cyan-500/20 dark:bg-cyan-500/25 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-10 -left-10 w-60 h-60 bg-indigo-500/15 dark:bg-indigo-500/20 rounded-full blur-3xl pointer-events-none" />
 
-            {/* 3D Scene container */}
-            <div className="w-full h-full rounded-[22px] overflow-hidden bg-slate-900/5 dark:bg-gray-950/60">
-              {webglSupported ? (
-                <Suspense
-                  fallback={
-                    <div className="w-full h-full flex flex-col items-center justify-center gap-3">
-                      <div className="w-12 h-12 rounded-full border-2 border-cyan-500/30 border-t-cyan-400 animate-spin" />
-                      <span className="text-xs text-slate-400 dark:text-gray-400 font-mono">Loading 3D Core...</span>
-                    </div>
-                  }
-                >
-                  <ThreeDScene />
-                </Suspense>
-              ) : (
-                <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center">
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-cyan-500/30 to-purple-500/30 animate-glow-pulse flex items-center justify-center mb-4">
-                    <span className="text-4xl">⚡</span>
-                  </div>
-                  <h4 className="text-base font-semibold text-slate-800 dark:text-gray-200">Interactive Digital Hub</h4>
-                  <p className="text-xs text-slate-500 dark:text-gray-400 mt-1 max-w-xs">Clean, fast digital solutions for modern businesses.</p>
+            {/* Interactive 3D Spatial Device */}
+            <Suspense
+              fallback={
+                <div className="w-full h-80 flex flex-col items-center justify-center gap-3 rounded-3xl bg-slate-900/60 border border-white/10">
+                  <div className="w-10 h-10 rounded-full border-2 border-cyan-500/30 border-t-cyan-400 animate-spin" />
+                  <span className="text-xs text-slate-400 font-mono">Loading Preview...</span>
                 </div>
-              )}
-            </div>
+              }
+            >
+              <ThreeDScene />
+            </Suspense>
           </div>
         </div>
       </div>

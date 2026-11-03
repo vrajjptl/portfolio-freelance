@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import HomePage from './components/HomePage';
 import NotFound from './components/NotFound';
-import ReptileCursor from './components/ReptileCursor';
+import SmoothCursor from './components/SmoothCursor';
 import WhatsAppFloat from './components/WhatsAppFloat';
 import { Bars3Icon, XMarkIcon, SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 
@@ -59,7 +59,7 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-gray-950 text-slate-900 dark:text-gray-100 selection:bg-cyan-500/30 selection:text-cyan-700 dark:selection:text-cyan-200 transition-colors duration-300">
-        <ReptileCursor />
+        <SmoothCursor />
 
         {/* Floating Island Header */}
         <header className="sticky top-3 z-50 px-4 sm:px-6 max-w-7xl mx-auto w-full transition-all">

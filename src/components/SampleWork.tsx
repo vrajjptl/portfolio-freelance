@@ -87,7 +87,7 @@ const SampleWork: React.FC = () => {
         {projects.map((proj, idx) => (
           <div
             key={proj.id}
-            className="rounded-xl bg-white dark:bg-[#11141c] border border-black/[0.08] dark:border-white/[0.08] shadow-sm flex flex-col justify-between overflow-hidden"
+            className="group rounded-xl bg-white dark:bg-[#11141c] border border-black/[0.08] dark:border-white/[0.08] shadow-sm hover:border-cyan-500/35 dark:hover:border-cyan-500/35 hover:shadow-lg hover:shadow-cyan-500/[0.06] transition-all duration-300 flex flex-col justify-between overflow-hidden"
           >
             <div>
               {/* Header bar */}

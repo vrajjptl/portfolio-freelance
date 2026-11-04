@@ -16,7 +16,7 @@ const ThreeDScene: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'store' | 'pos' | 'clinic'>('store');
 
   return (
-    <div className="relative w-full rounded-2xl bg-white dark:bg-[#11141c] border border-black/[0.08] dark:border-white/[0.08] shadow-sm overflow-hidden flex flex-col">
+    <div className="relative w-full rounded-2xl bg-white dark:bg-[#11141c] border border-black/[0.08] dark:border-white/[0.08] shadow-md shadow-cyan-500/[0.04] dark:shadow-cyan-500/[0.08] hover:border-cyan-500/30 transition-all duration-300 overflow-hidden flex flex-col">
       {/* Device Header */}
       <div className="px-4 py-3 bg-zinc-50 dark:bg-[#161a24] border-b border-black/[0.06] dark:border-white/[0.06] flex items-center justify-between">
         <div className="flex items-center gap-1.5">

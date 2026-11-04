@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 const SmoothCursor: React.FC = () => {
   const dotRef = useRef<HTMLDivElement | null>(null);
   const ringRef = useRef<HTMLDivElement | null>(null);
+  const glowRef = useRef<HTMLDivElement | null>(null);
 
   const [visible, setVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -19,10 +20,12 @@ const SmoothCursor: React.FC = () => {
     }
 
     // Positions and smooth lerp interpolation
-    let mouseX = -100;
-    let mouseY = -100;
-    let ringX = -100;
-    let ringY = -100;
+    let mouseX = -200;
+    let mouseY = -200;
+    let ringX = -200;
+    let ringY = -200;
+    let glowX = -200;
+    let glowY = -200;
     let animId: number;
 
     const onMouseMove = (e: MouseEvent) => {
@@ -57,14 +60,21 @@ const SmoothCursor: React.FC = () => {
     document.addEventListener('mouseleave', onMouseLeave);
     document.addEventListener('mouseenter', onMouseEnter);
 
-    // Ultra-smooth spring-lerp loop for trailing ring
+    // Ultra-smooth lerp loop for trailing ring and ambient aura glow
     const render = () => {
-      // 0.16 lerp factor gives fluid, lag-free momentum
-      ringX += (mouseX - ringX) * 0.16;
-      ringY += (mouseY - ringY) * 0.16;
+      // 0.18 lerp factor for crisp, fluid momentum
+      ringX += (mouseX - ringX) * 0.18;
+      ringY += (mouseY - ringY) * 0.18;
+
+      // 0.08 lerp factor for softer, dreamy aura follow
+      glowX += (mouseX - glowX) * 0.08;
+      glowY += (mouseY - glowY) * 0.08;
 
       if (ringRef.current) {
         ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+      }
+      if (glowRef.current) {
+        glowRef.current.style.transform = `translate3d(${glowX}px, ${glowY}px, 0)`;
       }
 
       animId = requestAnimationFrame(render);
@@ -91,37 +101,53 @@ const SmoothCursor: React.FC = () => {
       }`}
       aria-hidden="true"
     >
-      {/* 1. Outer Smooth Trailing Ring / Halo */}
+      {/* 1. Ambient Cursor Glow Aura (Soft Backlight) */}
+      <div
+        ref={glowRef}
+        className="fixed top-0 left-0 -ml-28 -mt-28 w-56 h-56 rounded-full pointer-events-none will-change-transform opacity-60 dark:opacity-40 transition-opacity duration-300"
+        style={{
+          background:
+            'radial-gradient(circle, rgba(6, 182, 212, 0.18) 0%, rgba(99, 102, 241, 0.08) 40%, transparent 70%)',
+          transform: 'translate3d(-200px, -200px, 0)',
+        }}
+      />
+
+      {/* 2. Outer Smooth Trailing Ring / Halo with Luminous Glow */}
       <div
         ref={ringRef}
-        className="fixed top-0 left-0 -ml-4 -mt-4 rounded-full pointer-events-none will-change-transform transition-[width,height,background-color,border-color,opacity] duration-200 ease-out"
+        className="fixed top-0 left-0 rounded-full pointer-events-none will-change-transform transition-[width,height,background-color,border-color,box-shadow,opacity] duration-200 ease-out"
         style={{
-          width: isHovered ? '48px' : '32px',
-          height: isHovered ? '48px' : '32px',
-          marginLeft: isHovered ? '-24px' : '-16px',
-          marginTop: isHovered ? '-24px' : '-16px',
+          width: isHovered ? '48px' : '34px',
+          height: isHovered ? '48px' : '34px',
+          marginLeft: isHovered ? '-24px' : '-17px',
+          marginTop: isHovered ? '-24px' : '-17px',
           backgroundColor: isHovered
-            ? 'rgba(6, 182, 212, 0.14)'
-            : 'rgba(6, 182, 212, 0.05)',
+            ? 'rgba(6, 182, 212, 0.16)'
+            : 'rgba(6, 182, 212, 0.08)',
           border: isHovered
-            ? '1.5px solid rgba(6, 182, 212, 0.7)'
-            : '1px solid rgba(6, 182, 212, 0.35)',
+            ? '1.5px solid rgba(6, 182, 212, 0.75)'
+            : '1px solid rgba(6, 182, 212, 0.45)',
+          boxShadow: isHovered
+            ? '0 0 24px rgba(6, 182, 212, 0.45), inset 0 0 10px rgba(6, 182, 212, 0.2)'
+            : '0 0 14px rgba(6, 182, 212, 0.25)',
           backdropFilter: isHovered ? 'blur(1px)' : 'none',
-          transform: 'translate3d(-100px, -100px, 0)',
+          transform: 'translate3d(-200px, -200px, 0)',
           scale: isClicked ? '0.85' : '1',
         }}
       />
 
-      {/* 2. Precision Center Dot (0 Latency) */}
+      {/* 3. Precision Glowing Center Dot */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 -ml-1 -mt-1 rounded-full pointer-events-none will-change-transform bg-gradient-to-tr from-cyan-500 to-blue-500 shadow-sm shadow-cyan-500/50 transition-transform duration-75 ease-out"
+        className="fixed top-0 left-0 rounded-full pointer-events-none will-change-transform bg-cyan-400 dark:bg-cyan-300 transition-transform duration-75 ease-out"
         style={{
           width: isHovered ? '6px' : '5px',
           height: isHovered ? '6px' : '5px',
           marginLeft: isHovered ? '-3px' : '-2.5px',
           marginTop: isHovered ? '-3px' : '-2.5px',
-          transform: 'translate3d(-100px, -100px, 0)',
+          boxShadow:
+            '0 0 10px 2px rgba(6, 182, 212, 0.9), 0 0 20px 4px rgba(14, 165, 233, 0.5)',
+          transform: 'translate3d(-200px, -200px, 0)',
           scale: isClicked ? '0.7' : '1',
         }}
       />
@@ -130,3 +156,4 @@ const SmoothCursor: React.FC = () => {
 };
 
 export default SmoothCursor;
+

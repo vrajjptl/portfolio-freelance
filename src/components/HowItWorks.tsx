@@ -46,7 +46,7 @@ const HowItWorks: React.FC = () => {
         {steps.map((st, idx) => (
           <div
             key={idx}
-            className="p-5 rounded-xl bg-white dark:bg-[#11141c] border border-black/[0.08] dark:border-white/[0.08] shadow-sm flex flex-col justify-between"
+            className="group p-5 rounded-xl bg-white dark:bg-[#11141c] border border-black/[0.08] dark:border-white/[0.08] shadow-sm hover:border-cyan-500/35 dark:hover:border-cyan-500/35 hover:shadow-lg hover:shadow-cyan-500/[0.06] transition-all duration-300 flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center justify-between mb-4">

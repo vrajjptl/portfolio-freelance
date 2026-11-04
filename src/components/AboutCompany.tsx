@@ -25,7 +25,7 @@ const AboutCompany: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           {/* Left: Brand Mark & Context */}
           <div className="md:col-span-4 flex flex-col space-y-4">
-            <div className="w-14 h-14 rounded-xl bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 flex items-center justify-center font-semibold text-xl tracking-tight">
+            <div className="w-14 h-14 rounded-xl bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 flex items-center justify-center font-semibold text-xl tracking-tight shadow-md shadow-cyan-500/20">
               D
             </div>
 

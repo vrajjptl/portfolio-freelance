@@ -121,7 +121,7 @@
     },
     "business": {
       "name": "Business Standard",
-      "tag": "Most Popular ⭐",
+      "tag": "Most Popular",
       "timeline": "Ready in 7 to 10 Days",
       "desc": "Complete digital presence for clinics, agro centers, schools, and expanding businesses.",
       "priceLabel": "Tailored Quote",
@@ -166,7 +166,7 @@
     "items": [
       {
         "q": "Will this website or app work smoothly on budget Android phones?",
-        "a": "Yes, 100%! All DeliverNow digital systems are engineered specifically for budget smartphones and load in under 2 seconds even on slow mobile data networks."
+        "a": "Yes. All DeliverNow digital systems are engineered specifically for budget smartphones and load in under 2 seconds even on slow mobile data networks."
       },
       {
         "q": "We have no prior experience with software. Can our staff operate it?",
@@ -193,7 +193,7 @@
       "message": "Brief details about your business...",
       "submit": "Send Inquiry",
       "quickWhatsApp": "Or Send via WhatsApp",
-      "success": "Thank you! Your inquiry has been received. The DeliverNow team will reach out promptly."
+      "success": "Thank you. Your inquiry has been received. The DeliverNow team will reach out promptly."
     }
   },
   "footer": {

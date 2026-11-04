@@ -23,29 +23,28 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="border-t border-slate-200 dark:border-white/10 bg-white/80 dark:bg-gray-950/80 backdrop-blur-md pt-12 pb-10 px-4 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+    <footer className="border-t border-black/[0.06] dark:border-white/[0.07] bg-[#f7f8fa] dark:bg-[#0c0d12] pt-12 pb-10 px-4 sm:px-6 transition-colors duration-150">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Brand & Mission */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-2">
+        <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-1">
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-cyan-500 animate-pulse" />
-            <span className="text-lg font-bold text-slate-900 dark:text-gray-100">DeliverNow</span>
-            <span className="text-xs px-2.5 py-0.5 rounded-full bg-cyan-50 dark:bg-cyan-950 border border-cyan-200 dark:border-cyan-500/30 text-cyan-700 dark:text-cyan-400 font-mono">
-              Digital Solutions
+            <span className="text-sm font-semibold text-zinc-950 dark:text-zinc-100">DeliverNow</span>
+            <span className="text-[11px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
+              Studio
             </span>
           </div>
-          <p className="text-xs text-slate-500 dark:text-gray-400 max-w-md">
+          <p className="text-xs text-zinc-500 dark:text-zinc-400 max-w-sm">
             {t('footer.text')}
           </p>
         </div>
 
         {/* Clean Footer Navigation Links */}
-        <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-2">
+        <div className="flex flex-wrap items-center justify-center gap-1">
           {navLinks.map((link) => (
             <button
               key={link.href}
               onClick={() => handleNavClick(link.href)}
-              className="px-3 py-1.5 text-xs font-semibold text-slate-600 hover:text-cyan-600 dark:text-gray-300 dark:hover:text-cyan-400 rounded-full hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+              className="px-2.5 py-1 text-xs text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-100 rounded-md transition-colors"
             >
               {link.label}
             </button>
@@ -54,36 +53,36 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Direct Contact Bar */}
-      <div className="max-w-7xl mx-auto mt-8 pt-6 border-t border-slate-100 dark:border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium text-slate-500 dark:text-gray-400">
+      <div className="max-w-6xl mx-auto mt-8 pt-6 border-t border-black/[0.04] dark:border-white/[0.04] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 dark:text-zinc-400">
         <div className="flex flex-wrap items-center justify-center gap-4">
           <a
             href="https://wa.me/917414912464"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+            className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
           >
             WhatsApp: +91 7414912464
           </a>
-          <span className="text-slate-300 dark:text-gray-700">•</span>
+          <span className="text-zinc-300 dark:text-zinc-700">•</span>
           <a
             href="tel:+917414912464"
-            className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
+            className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
           >
             Call: +91 7414912464
           </a>
-          <span className="text-slate-300 dark:text-gray-700">•</span>
+          <span className="text-zinc-300 dark:text-zinc-700">•</span>
           <a
             href="mailto:vrajpatil9891@gmail.com"
-            className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+            className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
           >
             vrajpatil9891@gmail.com
           </a>
-          <span className="text-slate-300 dark:text-gray-700">•</span>
-          <span>📍 {t('footer.location')}</span>
+          <span className="text-zinc-300 dark:text-zinc-700">•</span>
+          <span>Maharashtra, India</span>
         </div>
 
-        <div className="text-[11px] font-mono text-slate-400 dark:text-gray-500">
-          © 2026 DeliverNow. All rights reserved.
+        <div className="text-[11px] font-mono text-zinc-400 dark:text-zinc-500">
+          © 2026 DeliverNow
         </div>
       </div>
     </footer>

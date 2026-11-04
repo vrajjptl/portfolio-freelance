@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import HomePage from './components/HomePage';
 import NotFound from './components/NotFound';
-import SmoothCursor from './components/SmoothCursor';
 import WhatsAppFloat from './components/WhatsAppFloat';
 import { Bars3Icon, XMarkIcon, SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 
@@ -17,7 +16,7 @@ function App() {
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
     const saved = localStorage.getItem('theme');
     if (saved === 'light' || saved === 'dark') return saved;
-    return 'dark'; // Default to modern dark mode
+    return 'dark';
   });
 
   useEffect(() => {
@@ -59,89 +58,87 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-gray-950 text-slate-900 dark:text-gray-100 selection:bg-cyan-500/30 selection:text-cyan-700 dark:selection:text-cyan-200 transition-colors duration-300">
-        <SmoothCursor />
-
-        {/* Floating Island Header */}
-        <header className="sticky top-3 z-50 px-4 sm:px-6 max-w-7xl mx-auto w-full transition-all">
-          <nav className="flex items-center justify-between px-5 py-3 rounded-full bg-white/80 dark:bg-gray-900/85 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 shadow-xl shadow-slate-200/50 dark:shadow-black/40 transition-colors duration-300">
-            {/* Brand Logo & Status */}
+      <div className="min-h-screen flex flex-col bg-[#f7f8fa] dark:bg-[#0c0d12] text-zinc-900 dark:text-zinc-100 transition-colors duration-150">
+        {/* Quiet Top Navigation Bar */}
+        <header className="sticky top-0 z-50 w-full bg-[#f7f8fa]/90 dark:bg-[#0c0d12]/90 backdrop-blur-md border-b border-black/[0.06] dark:border-white/[0.07]">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+            {/* Brand Logo & Quiet Status */}
             <a
               href="#"
-              className="flex items-center gap-3 group focus:outline-none"
+              className="flex items-center gap-2.5 group focus:outline-none"
             >
-              <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white font-extrabold text-lg shadow-md shadow-cyan-500/30 group-hover:scale-105 transition-transform">
+              <div className="w-7 h-7 rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 flex items-center justify-center font-semibold text-xs tracking-tight">
                 D
               </div>
-              <div className="flex flex-col text-left">
-                <span className="text-sm font-bold text-slate-900 dark:text-gray-100 group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors leading-tight tracking-tight">
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 tracking-tight">
                   DeliverNow
                 </span>
-                <span className="text-[11px] text-slate-500 dark:text-gray-400 font-medium flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse"></span>
+                <span className="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-[11px] font-normal">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                   {t('nav.available')}
                 </span>
               </div>
             </a>
 
             {/* Desktop Navigation Links */}
-            <div className="hidden lg:flex items-center gap-1">
+            <nav className="hidden lg:flex items-center gap-0.5">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => handleNavClick(link.href)}
-                  className="px-3 py-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white rounded-full hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                  className="px-3 py-1.5 text-xs font-normal text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-100 rounded-md hover:bg-black/[0.04] dark:hover:bg-white/[0.04] transition-colors"
                 >
                   {link.label}
                 </button>
               ))}
-            </div>
+            </nav>
 
-            {/* Right Side Controls: Theme Toggle, Language Toggle, and CTA */}
-            <div className="flex items-center gap-2.5 sm:gap-3">
-              {/* Dark / Light Mode Toggle Button */}
+            {/* Right Controls: Theme Toggle, Language Toggle, and CTA */}
+            <div className="flex items-center gap-2">
+              {/* Theme Toggle */}
               <button
                 type="button"
                 onClick={toggleTheme}
                 aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-                className="p-2 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-gray-800/80 dark:hover:bg-gray-700/80 text-slate-700 dark:text-cyan-400 border border-slate-200 dark:border-white/10 shadow-sm transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none"
+                className="w-8 h-8 rounded-lg flex items-center justify-center text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-100 hover:bg-black/[0.04] dark:hover:bg-white/[0.04] transition-colors focus:outline-none"
                 title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
               >
                 {theme === 'dark' ? (
-                  <SunIcon className="w-4 h-4 transition-transform hover:rotate-90 duration-300" />
+                  <SunIcon className="w-4 h-4" />
                 ) : (
-                  <MoonIcon className="w-4 h-4 transition-transform hover:-rotate-12 duration-300" />
+                  <MoonIcon className="w-4 h-4" />
                 )}
               </button>
 
-              {/* Language Switcher Pill: Marathi First */}
-              <div className="flex items-center p-0.5 rounded-full bg-slate-100 dark:bg-gray-950/80 border border-slate-200 dark:border-white/10 text-xs font-semibold">
+              {/* Language Switcher */}
+              <div className="flex items-center p-0.5 rounded-lg bg-black/[0.04] dark:bg-white/[0.06] text-xs">
                 <button
                   onClick={() => toggleLang('mr')}
-                  className={`px-3 py-1 rounded-full transition-all ${
+                  className={`px-2 py-1 rounded-md text-[11px] transition-colors ${
                     i18n.language === 'mr'
-                      ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-sm shadow-cyan-500/50 font-bold'
-                      : 'text-slate-700 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white'
+                      ? 'bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 shadow-sm font-medium'
+                      : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200'
                   }`}
                 >
                   मराठी
                 </button>
                 <button
                   onClick={() => toggleLang('en')}
-                  className={`px-2.5 py-1 rounded-full transition-all ${
+                  className={`px-2 py-1 rounded-md text-[11px] transition-colors ${
                     i18n.language === 'en'
-                      ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-sm shadow-cyan-500/50 font-bold'
-                      : 'text-slate-700 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white'
+                      ? 'bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 shadow-sm font-medium'
+                      : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200'
                   }`}
                 >
                   English
                 </button>
               </div>
 
-              {/* Direct Talk Button */}
+              {/* Quiet CTA Button */}
               <button
                 onClick={() => handleNavClick('#contact')}
-                className="hidden sm:inline-flex items-center px-4 py-1.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-semibold shadow-md shadow-cyan-500/20 hover:shadow-cyan-500/40 hover:scale-105 active:scale-95 transition-all"
+                className="hidden sm:inline-flex items-center px-3.5 py-1.5 rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-200 text-xs font-medium transition-colors"
               >
                 {t('nav.talk')}
               </button>
@@ -149,35 +146,34 @@ function App() {
               {/* Mobile Hamburger Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden p-1.5 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 focus:outline-none"
+                className="lg:hidden p-1.5 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 rounded-lg focus:outline-none"
                 aria-label="Toggle menu"
               >
                 {mobileMenuOpen ? (
-                  <XMarkIcon className="w-6 h-6" />
+                  <XMarkIcon className="w-5 h-5" />
                 ) : (
-                  <Bars3Icon className="w-6 h-6" />
+                  <Bars3Icon className="w-5 h-5" />
                 )}
               </button>
             </div>
-          </nav>
+          </div>
 
           {/* Mobile Dropdown Menu */}
           {mobileMenuOpen && (
-            <div className="lg:hidden mt-2 p-4 rounded-2xl bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl border border-slate-200 dark:border-white/10 shadow-2xl flex flex-col gap-2 animate-fade-in-up">
+            <div className="lg:hidden px-4 py-3 bg-[#f7f8fa] dark:bg-[#0c0d12] border-b border-black/[0.06] dark:border-white/[0.08] flex flex-col gap-1">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => handleNavClick(link.href)}
-                  className="w-full text-left px-4 py-2 text-sm font-medium text-slate-700 dark:text-gray-200 hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-xl transition-all"
+                  className="w-full text-left px-3 py-2 text-xs font-normal text-zinc-700 dark:text-zinc-300 hover:bg-black/[0.04] dark:hover:bg-white/[0.04] rounded-md transition-colors"
                 >
                   {link.label}
                 </button>
               ))}
-              <div className="pt-2 border-t border-slate-200 dark:border-white/10 flex justify-between items-center">
-                <span className="text-xs text-slate-500 dark:text-gray-400">{t('nav.available')}</span>
+              <div className="pt-2 mt-1 border-t border-black/[0.06] dark:border-white/[0.06]">
                 <button
                   onClick={() => handleNavClick('#contact')}
-                  className="px-4 py-1.5 rounded-full bg-cyan-500 text-white text-xs font-semibold"
+                  className="w-full py-2 rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 text-xs font-medium text-center"
                 >
                   {t('nav.talk')}
                 </button>

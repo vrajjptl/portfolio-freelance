@@ -94,52 +94,42 @@ const Contact: React.FC = () => {
     const cleanName = sanitize(form.name);
     const cleanPhone = sanitize(form.phone);
     const cleanMessage = sanitize(form.message);
-    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '';
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'b35f26f6-f921-4bbe-a57b-125c546a5607';
 
-    if (accessKey) {
-      try {
-        const response = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify({
-            access_key: accessKey,
-            name: cleanName,
-            phone: cleanPhone,
-            service: form.service || 'Not specified',
-            message: cleanMessage,
-            subject: 'New DeliverNow Lead: ' + cleanName + ' (' + cleanPhone + ')',
-            from_name: 'DeliverNow Website',
-            botcheck: honeypot,
-          }),
-        });
+    const formData = new FormData();
+    formData.append('access_key', accessKey);
+    formData.append('name', cleanName);
+    formData.append('phone', cleanPhone);
+    formData.append('service', form.service || 'General Inquiry');
+    formData.append('message', cleanMessage);
+    formData.append('subject', 'New DeliverNow Lead from ' + cleanName + ' (' + cleanPhone + ')');
+    formData.append('from_name', 'DeliverNow Website');
+    if (honeypot) formData.append('botcheck', honeypot);
 
-        const data = await response.json();
-        if (data.success) {
-          recordSubmission();
-          setSent(true);
-        } else {
-          setErrors({
-            _form: data.message || (i18n.language === 'mr' ? 'मेसेज पाठवण्यात त्रुटी आली. कृपया खालील WhatsApp वापरा.' : 'Error sending message. Please use WhatsApp.'),
-          });
-        }
-      } catch (err) {
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        recordSubmission();
+        setSent(true);
+      } else {
         setErrors({
-          _form: i18n.language === 'mr' ? 'नेटवर्क त्रुटी आली. कृपया थेट WhatsApp वर संपर्क करा.' : 'Network error. Please contact us via WhatsApp.',
+          _form: data.message || (i18n.language === 'mr' ? 'मेसेज पाठवण्यात त्रुटी आली. कृपया खालील WhatsApp वापरा.' : 'Error sending message. Please use WhatsApp.'),
         });
-      } finally {
-        setLoading(false);
       }
-    } else {
-      // Fallback when Web3Forms key is not yet set: auto-route filled details to WhatsApp
+    } catch (err) {
+      // Fallback: If network/adblocker blocks API, open WhatsApp with details so inquiry is never lost
       const inquiryText = i18n.language === 'mr'
         ? 'नमस्कार DeliverNow,\n\nनाव: ' + cleanName + '\nमोबाईल: ' + cleanPhone + '\nसेवा: ' + (form.service || 'माहिती हवी') + '\nसंदेश: ' + cleanMessage
         : 'Hi DeliverNow,\n\nName: ' + cleanName + '\nPhone: ' + cleanPhone + '\nService: ' + (form.service || 'Not specified') + '\nMessage: ' + cleanMessage;
       window.open('https://wa.me/917414912464?text=' + encodeURIComponent(inquiryText), '_blank');
       recordSubmission();
       setSent(true);
+    } finally {
       setLoading(false);
     }
   };

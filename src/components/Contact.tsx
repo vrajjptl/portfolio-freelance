@@ -15,7 +15,7 @@ const isValidPhone = (phone: string): boolean =>
   /^[\d\s+\-()]{10,15}$/.test(phone.trim());
 
 const isValidName = (name: string): boolean =>
-  /^[\p{L}\p{M}\s.'-]{2,60}$/u.test(name.trim());
+  /^[\p{L}\p{M}\s.'\-(),&]{2,60}$/u.test(name.trim());
 
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX = 3;

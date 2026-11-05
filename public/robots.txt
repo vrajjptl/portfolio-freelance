@@ -1,11 +1,9 @@
-# robots.txt - Viraj Patil Freelance Portfolio
+# robots.txt - DeliverNow (delivernow.ai)
 User-agent: *
 Allow: /
-Disallow: /api/
 
-Sitemap: https://virajpatil-freelance.vercel.app/sitemap.xml
+Sitemap: https://delivernow.ai/sitemap.xml
 
-# Crawl-delay for polite bots
 User-agent: Googlebot
 Allow: /
 

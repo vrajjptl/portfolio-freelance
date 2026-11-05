@@ -2,11 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://virajpatil-freelance.vercel.app/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <loc>https://delivernow.ai/</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="mr" href="https://virajpatil-freelance.vercel.app/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://virajpatil-freelance.vercel.app/" />
+    <xhtml:link rel="alternate" hreflang="mr" href="https://delivernow.ai/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://delivernow.ai/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://delivernow.ai/" />
   </url>
 </urlset>

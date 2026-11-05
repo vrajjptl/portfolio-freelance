@@ -125,7 +125,7 @@ const PricingPackages: React.FC = () => {
                 {pkg.name}
               </h3>
 
-              <div className="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-3">
+              <div className="text-xl font-medium text-zinc-950 dark:text-zinc-50 tracking-tight tabular-nums mb-3">
                 {pkg.priceLabel}
               </div>
 

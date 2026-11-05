@@ -91,11 +91,57 @@ const Contact: React.FC = () => {
     if (!validate()) return;
 
     setLoading(true);
-    setTimeout(() => {
+    const cleanName = sanitize(form.name);
+    const cleanPhone = sanitize(form.phone);
+    const cleanMessage = sanitize(form.message);
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '';
+
+    if (accessKey) {
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({
+            access_key: accessKey,
+            name: cleanName,
+            phone: cleanPhone,
+            service: form.service || 'Not specified',
+            message: cleanMessage,
+            subject: 'New DeliverNow Lead: ' + cleanName + ' (' + cleanPhone + ')',
+            from_name: 'DeliverNow Website',
+            botcheck: honeypot,
+          }),
+        });
+
+        const data = await response.json();
+        if (data.success) {
+          recordSubmission();
+          setSent(true);
+        } else {
+          setErrors({
+            _form: data.message || (i18n.language === 'mr' ? 'मेसेज पाठवण्यात त्रुटी आली. कृपया खालील WhatsApp वापरा.' : 'Error sending message. Please use WhatsApp.'),
+          });
+        }
+      } catch (err) {
+        setErrors({
+          _form: i18n.language === 'mr' ? 'नेटवर्क त्रुटी आली. कृपया थेट WhatsApp वर संपर्क करा.' : 'Network error. Please contact us via WhatsApp.',
+        });
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      // Fallback when Web3Forms key is not yet set: auto-route filled details to WhatsApp
+      const inquiryText = i18n.language === 'mr'
+        ? 'नमस्कार DeliverNow,\n\nनाव: ' + cleanName + '\nमोबाईल: ' + cleanPhone + '\nसेवा: ' + (form.service || 'माहिती हवी') + '\nसंदेश: ' + cleanMessage
+        : 'Hi DeliverNow,\n\nName: ' + cleanName + '\nPhone: ' + cleanPhone + '\nService: ' + (form.service || 'Not specified') + '\nMessage: ' + cleanMessage;
+      window.open('https://wa.me/917414912464?text=' + encodeURIComponent(inquiryText), '_blank');
       recordSubmission();
       setSent(true);
       setLoading(false);
-    }, 400);
+    }
   };
 
   const defaultWALinkText =
@@ -205,10 +251,22 @@ const Contact: React.FC = () => {
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 max-w-sm mx-auto">
                   {t('contact.form.success')}
                 </p>
-                <div className="pt-2">
+                <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-2">
+                  <a
+                    href={`https://wa.me/917414912464?text=${encodeURIComponent(
+                      i18n.language === 'mr'
+                        ? `नमस्कार DeliverNow, मी वेबसाईटवरून नुकतीच चौकशी पाठवली आहे. (नाव: ${sanitize(form.name)}, फोन: ${sanitize(form.phone)})`
+                        : `Hi DeliverNow, I just submitted an inquiry on your website. (Name: ${sanitize(form.name)}, Phone: ${sanitize(form.phone)})`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto px-4 py-2 rounded-lg bg-emerald-600 text-white hover:bg-emerald-500 text-xs font-medium inline-flex items-center justify-center gap-1.5 transition-colors shadow-sm"
+                  >
+                    <span>{i18n.language === 'mr' ? 'WhatsApp वर तातडीने चर्चा करा' : 'Chat instantly on WhatsApp'}</span>
+                  </a>
                   <button
                     onClick={() => { setSent(false); setForm({ name: '', phone: '', service: '', message: '' }); }}
-                    className="px-4 py-2 rounded-lg border border-black/[0.08] dark:border-white/[0.08] text-xs font-medium text-zinc-700 dark:text-zinc-300"
+                    className="w-full sm:w-auto px-4 py-2 rounded-lg border border-black/[0.08] dark:border-white/[0.08] text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:bg-black/[0.04] dark:hover:bg-white/[0.04] transition-colors"
                   >
                     {i18n.language === 'mr' ? 'दुसरा मेसेज पाठवा' : 'Send another'}
                   </button>

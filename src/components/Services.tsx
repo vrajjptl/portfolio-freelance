@@ -55,7 +55,7 @@ const Services: React.FC = () => {
         {items.map((item, idx) => (
           <div
             key={idx}
-            className="group p-6 rounded-xl bg-white dark:bg-[#11141c] border border-black/[0.08] dark:border-white/[0.08] shadow-sm hover:border-cyan-500/35 dark:hover:border-cyan-500/35 hover:shadow-lg hover:shadow-cyan-500/[0.06] transition-all duration-300 flex flex-col justify-between"
+            className="group p-5 sm:p-6 rounded-xl bg-white dark:bg-[#11141c] border border-black/[0.08] dark:border-white/[0.08] shadow-sm hover:border-cyan-500/35 dark:hover:border-cyan-500/35 hover:shadow-lg hover:shadow-cyan-500/[0.06] transition-all duration-300 flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center justify-between mb-4">

@@ -58,16 +58,16 @@ body {
 /* 3D Mobile Float (Smooth up-down with 3D perspective pitch & roll) */
 @keyframes mobile-float-3d {
   0%, 100% {
-    transform: translateY(0px) rotateX(1.5deg) rotateY(-1.5deg);
+    transform: translateY(0px) rotateX(1deg) rotateY(-1deg);
   }
   25% {
-    transform: translateY(-8px) rotateX(4deg) rotateY(1.5deg) rotateZ(0.5deg);
+    transform: translateY(-4px) rotateX(2deg) rotateY(1deg);
   }
   50% {
-    transform: translateY(-14px) rotateX(-1deg) rotateY(3deg) rotateZ(-0.5deg);
+    transform: translateY(-8px) rotateX(-1deg) rotateY(1.5deg);
   }
   75% {
-    transform: translateY(-6px) rotateX(-3deg) rotateY(-1.5deg);
+    transform: translateY(-4px) rotateX(-1.5deg) rotateY(-1deg);
   }
 }
 

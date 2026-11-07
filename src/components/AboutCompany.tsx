@@ -21,7 +21,7 @@ const AboutCompany: React.FC = () => {
 
   return (
     <section id="about" className="py-20 px-4 sm:px-6 max-w-6xl mx-auto w-full scroll-mt-14">
-      <div className="p-8 sm:p-10 rounded-xl bg-white dark:bg-[#11141c] border border-black/[0.08] dark:border-white/[0.08] shadow-sm">
+      <div className="p-5 sm:p-8 md:p-10 rounded-xl bg-white dark:bg-[#11141c] border border-black/[0.08] dark:border-white/[0.08] shadow-sm">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           {/* Left: Brand Mark & Context */}
           <div className="md:col-span-4 flex flex-col space-y-4">

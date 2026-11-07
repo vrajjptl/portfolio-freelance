@@ -76,9 +76,9 @@ const PricingPackages: React.FC = () => {
   ];
 
   return (
-    <section id="pricing" className="py-20 px-4 sm:px-6 max-w-6xl mx-auto w-full scroll-mt-14 relative">
+    <section id="pricing" className="py-20 px-4 sm:px-6 max-w-6xl mx-auto w-full scroll-mt-14 relative overflow-hidden">
       {/* Subtle Section Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-cyan-500/5 dark:bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none -z-10" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[500px] h-[240px] sm:h-[300px] max-w-full bg-cyan-500/5 dark:bg-cyan-500/10 rounded-full blur-[100px] sm:blur-[120px] pointer-events-none -z-10" />
 
       {/* Section Header */}
       <div className="max-w-2xl mb-12 space-y-2">
@@ -98,7 +98,7 @@ const PricingPackages: React.FC = () => {
         {packages.map((pkg) => (
           <div
             key={pkg.id}
-            className={`rounded-xl p-6 flex flex-col justify-between bg-white dark:bg-[#11141c] border transition-all duration-300 relative ${
+            className={`rounded-xl p-5 sm:p-6 flex flex-col justify-between bg-white dark:bg-[#11141c] border transition-all duration-300 relative ${
               pkg.isPopular
                 ? 'border-cyan-500/40 dark:border-cyan-400/40 shadow-lg shadow-cyan-500/[0.08] dark:shadow-cyan-500/[0.14]'
                 : 'border-black/[0.08] dark:border-white/[0.08] hover:border-cyan-500/30 dark:hover:border-cyan-500/30 hover:shadow-lg hover:shadow-cyan-500/[0.05]'

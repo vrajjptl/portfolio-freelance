@@ -121,8 +121,10 @@ function App() {
                       ? 'bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 shadow-sm font-medium'
                       : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200'
                   }`}
+                  aria-label="मराठी भाषेत बदला"
                 >
-                  मराठी
+                  <span className="sm:hidden font-medium">MR</span>
+                  <span className="hidden sm:inline">मराठी</span>
                 </button>
                 <button
                   onClick={() => toggleLang('en')}
@@ -131,8 +133,10 @@ function App() {
                       ? 'bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 shadow-sm font-medium'
                       : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200'
                   }`}
+                  aria-label="Switch to English"
                 >
-                  English
+                  <span className="sm:hidden font-medium">EN</span>
+                  <span className="hidden sm:inline">English</span>
                 </button>
               </div>
 

@@ -86,44 +86,44 @@ const ThreeDScene: React.FC = () => {
         </div>
 
         {/* Segmented Mode Switcher */}
-        <div className="p-2 border-b border-black/[0.06] dark:border-white/[0.06] flex gap-1 bg-zinc-100/50 dark:bg-[#0c0d12]/40">
+        <div className="p-1.5 sm:p-2 border-b border-black/[0.06] dark:border-white/[0.06] flex gap-1 bg-zinc-100/50 dark:bg-[#0c0d12]/40">
           <button
             type="button"
             onClick={() => setActiveTab('store')}
-            className={`flex-1 py-1.5 px-2.5 rounded-lg text-xs font-medium transition-colors flex items-center justify-center gap-1.5 ${
+            className={`flex-1 py-1.5 px-1.5 sm:px-2.5 rounded-lg text-[11px] sm:text-xs font-medium transition-colors flex items-center justify-center gap-1 sm:gap-1.5 min-w-0 ${
               activeTab === 'store'
                 ? 'bg-white dark:bg-zinc-800 text-zinc-950 dark:text-zinc-100 shadow-sm'
                 : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200'
             }`}
           >
-            <DevicePhoneMobileIcon className="w-3.5 h-3.5" />
-            <span>{isEn ? 'Store website' : 'दुकान वेबसाईट'}</span>
+            <DevicePhoneMobileIcon className="w-3.5 h-3.5 shrink-0" />
+            <span className="truncate">{isEn ? 'Store website' : 'दुकान वेबसाईट'}</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab('pos')}
-            className={`flex-1 py-1.5 px-2.5 rounded-lg text-xs font-medium transition-colors flex items-center justify-center gap-1.5 ${
+            className={`flex-1 py-1.5 px-1.5 sm:px-2.5 rounded-lg text-[11px] sm:text-xs font-medium transition-colors flex items-center justify-center gap-1 sm:gap-1.5 min-w-0 ${
               activeTab === 'pos'
                 ? 'bg-white dark:bg-zinc-800 text-zinc-950 dark:text-zinc-100 shadow-sm'
                 : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200'
             }`}
           >
-            <CalculatorIcon className="w-3.5 h-3.5" />
-            <span>{isEn ? 'Counter POS' : 'POS बिलिंग'}</span>
+            <CalculatorIcon className="w-3.5 h-3.5 shrink-0" />
+            <span className="truncate">{isEn ? 'Counter POS' : 'POS बिलिंग'}</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab('clinic')}
-            className={`flex-1 py-1.5 px-2.5 rounded-lg text-xs font-medium transition-colors flex items-center justify-center gap-1.5 ${
+            className={`flex-1 py-1.5 px-1.5 sm:px-2.5 rounded-lg text-[11px] sm:text-xs font-medium transition-colors flex items-center justify-center gap-1 sm:gap-1.5 min-w-0 ${
               activeTab === 'clinic'
                 ? 'bg-white dark:bg-zinc-800 text-zinc-950 dark:text-zinc-100 shadow-sm'
                 : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200'
             }`}
           >
-            <UserGroupIcon className="w-3.5 h-3.5" />
-            <span>{isEn ? 'Clinic token' : 'क्लिनिक टोकन'}</span>
+            <UserGroupIcon className="w-3.5 h-3.5 shrink-0" />
+            <span className="truncate">{isEn ? 'Clinic token' : 'क्लिनिक टोकन'}</span>
           </button>
         </div>
 

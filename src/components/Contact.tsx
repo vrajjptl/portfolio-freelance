@@ -160,7 +160,7 @@ const Contact: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left: Contact Info */}
         <div className="lg:col-span-5 space-y-4">
-          <div className="p-6 rounded-xl bg-white dark:bg-[#11141c] border border-black/[0.08] dark:border-white/[0.08] shadow-sm space-y-5">
+          <div className="p-5 sm:p-6 rounded-xl bg-white dark:bg-[#11141c] border border-black/[0.08] dark:border-white/[0.08] shadow-sm space-y-5">
             <h3 className="text-sm font-medium text-zinc-950 dark:text-zinc-100">
               {i18n.language === 'mr' ? 'थेट संपर्क' : 'Direct communication'}
             </h3>
@@ -229,7 +229,7 @@ const Contact: React.FC = () => {
 
         {/* Right: Clean Inquiry Form */}
         <div className="lg:col-span-7">
-          <div className="p-6 sm:p-8 rounded-xl bg-white dark:bg-[#11141c] border border-black/[0.08] dark:border-white/[0.08] shadow-sm">
+          <div className="p-5 sm:p-8 rounded-xl bg-white dark:bg-[#11141c] border border-black/[0.08] dark:border-white/[0.08] shadow-sm">
             {sent ? (
               <div className="py-10 text-center space-y-3">
                 <div className="w-10 h-10 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto text-lg">
@@ -299,7 +299,7 @@ const Contact: React.FC = () => {
                       placeholder="e.g. Ramesh Patil"
                       className={`w-full px-3 py-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border ${
                         errors.name ? 'border-red-500' : 'border-black/[0.08] dark:border-white/[0.08]'
-                      } text-xs text-zinc-950 dark:text-zinc-100 placeholder-zinc-400 outline-none`}
+                      } text-base sm:text-xs text-zinc-950 dark:text-zinc-100 placeholder-zinc-400 outline-none`}
                     />
                     {errors.name && <p className="text-[11px] text-red-500">{errors.name}</p>}
                   </div>
@@ -319,7 +319,7 @@ const Contact: React.FC = () => {
                       placeholder="e.g. +91 9876543210"
                       className={`w-full px-3 py-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border ${
                         errors.phone ? 'border-red-500' : 'border-black/[0.08] dark:border-white/[0.08]'
-                      } text-xs text-zinc-950 dark:text-zinc-100 placeholder-zinc-400 outline-none`}
+                      } text-base sm:text-xs text-zinc-950 dark:text-zinc-100 placeholder-zinc-400 outline-none`}
                     />
                     {errors.phone && <p className="text-[11px] text-red-500">{errors.phone}</p>}
                   </div>
@@ -334,7 +334,7 @@ const Contact: React.FC = () => {
                     name="service"
                     value={form.service}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-black/[0.08] dark:border-white/[0.08] text-xs text-zinc-950 dark:text-zinc-100 outline-none"
+                    className="w-full px-3 py-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-black/[0.08] dark:border-white/[0.08] text-base sm:text-xs text-zinc-950 dark:text-zinc-100 outline-none"
                   >
                     <option value="">{i18n.language === 'mr' ? 'सेवा निवडा...' : 'Select a service...'}</option>
                     <option value="Website">{i18n.language === 'mr' ? 'वेबसाईट डिझाइन व डेव्हलपमेंट' : 'Website design & development'}</option>
@@ -359,7 +359,7 @@ const Contact: React.FC = () => {
                     placeholder={t('contact.form.message')}
                     className={`w-full px-3 py-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border ${
                       errors.message ? 'border-red-500' : 'border-black/[0.08] dark:border-white/[0.08]'
-                    } text-xs text-zinc-950 dark:text-zinc-100 placeholder-zinc-400 outline-none resize-none`}
+                    } text-base sm:text-xs text-zinc-950 dark:text-zinc-100 placeholder-zinc-400 outline-none resize-none`}
                   />
                   {errors.message && <p className="text-[11px] text-red-500">{errors.message}</p>}
                 </div>

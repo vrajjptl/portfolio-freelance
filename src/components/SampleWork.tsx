@@ -138,11 +138,11 @@ const SampleWork: React.FC = () => {
             </div>
 
             {/* Action Buttons */}
-            <div className="p-5 pt-0 space-y-2 border-t border-black/[0.06] dark:border-white/[0.06] mt-4">
+            <div className="p-4 sm:p-5 pt-0 space-y-2 border-t border-black/[0.06] dark:border-white/[0.06] mt-4">
               <button
                 type="button"
                 onClick={() => setActiveModal(proj.id)}
-                className="w-full py-2 px-3 rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 text-xs font-medium flex items-center justify-center gap-1.5 transition-colors"
+                className="w-full py-2.5 px-3 rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 text-xs font-medium flex items-center justify-center gap-1.5 active:bg-zinc-800 dark:active:bg-zinc-200 transition-colors"
               >
                 <EyeIcon className="w-3.5 h-3.5" />
                 <span>{t('sampleWork.viewDemo')}</span>
@@ -152,7 +152,7 @@ const SampleWork: React.FC = () => {
                 href={getDiscussLink(proj.title)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-2 px-3 rounded-lg text-zinc-700 dark:text-zinc-300 hover:bg-black/[0.04] dark:hover:bg-white/[0.04] text-xs font-normal flex items-center justify-center gap-1.5 transition-colors"
+                className="w-full py-2.5 px-3 rounded-lg text-zinc-700 dark:text-zinc-300 hover:bg-black/[0.04] dark:hover:bg-white/[0.04] text-xs font-normal flex items-center justify-center gap-1.5 transition-colors"
               >
                 <span>{t('sampleWork.requestSimilar')}</span>
                 <ArrowTopRightOnSquareIcon className="w-3 h-3 text-zinc-400" />
@@ -164,8 +164,8 @@ const SampleWork: React.FC = () => {
 
       {/* Live Interactive Demo Modal */}
       {activeModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-          <div className="relative w-full max-w-xl rounded-xl bg-white dark:bg-[#11141c] border border-black/[0.08] dark:border-white/[0.08] shadow-xl overflow-hidden max-h-[85vh] flex flex-col">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-sm">
+          <div className="relative w-full max-w-xl rounded-xl bg-white dark:bg-[#11141c] border border-black/[0.08] dark:border-white/[0.08] shadow-xl overflow-hidden max-h-[90vh] flex flex-col">
             {/* Modal Topbar */}
             <div className="px-5 py-3.5 border-b border-black/[0.06] dark:border-white/[0.06] flex items-center justify-between bg-zinc-50 dark:bg-[#161a24]">
               <div className="flex items-center gap-2">

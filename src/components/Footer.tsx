@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="border-t border-black/[0.06] dark:border-white/[0.07] bg-[#f7f8fa] dark:bg-[#0c0d12] pt-12 pb-10 px-4 sm:px-6 transition-colors duration-150">
+    <footer className="border-t border-black/[0.06] dark:border-white/[0.07] bg-[#f7f8fa] dark:bg-[#0c0d12] pt-12 pb-28 sm:pb-10 px-4 sm:px-6 transition-colors duration-150">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Brand & Mission */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-1">

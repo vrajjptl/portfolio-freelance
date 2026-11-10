@@ -1,6 +1,7 @@
 // src/components/Contact.tsx
 import React, { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import AssistantBot, { BotMood } from './AssistantBot';
 import {
   PhoneIcon,
   EnvelopeIcon,
@@ -39,6 +40,7 @@ const Contact: React.FC = () => {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isFocused, setIsFocused] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
   const [honeypot, setHoneypot] = useState('');
 
@@ -142,6 +144,28 @@ const Contact: React.FC = () => {
   const telLink = 'tel:+917414912464';
   const mailtoLink = 'mailto:vrajpatil9891@gmail.com';
 
+  // Compute animated Assistant Bot state based on real-time form activity
+  let botMood: BotMood = 'idle';
+  let botSpeech: string | undefined = undefined;
+
+  if (sent) {
+    botMood = 'celebrate';
+  } else if (errors._form) {
+    botMood = 'error';
+    botSpeech = errors._form;
+  } else if (errors.name) {
+    botMood = 'error';
+    botSpeech = errors.name;
+  } else if (errors.phone) {
+    botMood = 'error';
+    botSpeech = errors.phone;
+  } else if (errors.message) {
+    botMood = 'error';
+    botSpeech = errors.message;
+  } else if (isFocused || form.name || form.phone || form.message) {
+    botMood = 'focus';
+  }
+
   return (
     <section id="contact" className="py-20 px-4 sm:px-6 max-w-6xl mx-auto w-full scroll-mt-14">
       {/* Section Header */}
@@ -230,6 +254,9 @@ const Contact: React.FC = () => {
         {/* Right: Clean Inquiry Form */}
         <div className="lg:col-span-7">
           <div className="p-5 sm:p-8 rounded-xl bg-white dark:bg-[#11141c] border border-black/[0.08] dark:border-white/[0.08] shadow-sm">
+            {/* Interactive Procedural Assistant Avatar */}
+            <AssistantBot mood={botMood} customMessage={botSpeech} />
+
             {sent ? (
               <div className="py-10 text-center space-y-3">
                 <div className="w-10 h-10 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto text-lg">
@@ -296,6 +323,8 @@ const Contact: React.FC = () => {
                       maxLength={60}
                       value={form.name}
                       onChange={handleChange}
+                      onFocus={() => setIsFocused(true)}
+                      onBlur={() => setIsFocused(false)}
                       placeholder="e.g. Ramesh Patil"
                       className={`w-full px-3 py-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border ${
                         errors.name ? 'border-red-500' : 'border-black/[0.08] dark:border-white/[0.08]'
@@ -316,6 +345,8 @@ const Contact: React.FC = () => {
                       maxLength={15}
                       value={form.phone}
                       onChange={handleChange}
+                      onFocus={() => setIsFocused(true)}
+                      onBlur={() => setIsFocused(false)}
                       placeholder="e.g. +91 9876543210"
                       className={`w-full px-3 py-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border ${
                         errors.phone ? 'border-red-500' : 'border-black/[0.08] dark:border-white/[0.08]'
@@ -334,6 +365,8 @@ const Contact: React.FC = () => {
                     name="service"
                     value={form.service}
                     onChange={handleChange}
+                    onFocus={() => setIsFocused(true)}
+                    onBlur={() => setIsFocused(false)}
                     className="w-full px-3 py-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border border-black/[0.08] dark:border-white/[0.08] text-base sm:text-xs text-zinc-950 dark:text-zinc-100 outline-none"
                   >
                     <option value="">{i18n.language === 'mr' ? 'सेवा निवडा...' : 'Select a service...'}</option>
@@ -356,6 +389,8 @@ const Contact: React.FC = () => {
                     maxLength={2000}
                     value={form.message}
                     onChange={handleChange}
+                    onFocus={() => setIsFocused(true)}
+                    onBlur={() => setIsFocused(false)}
                     placeholder={t('contact.form.message')}
                     className={`w-full px-3 py-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border ${
                       errors.message ? 'border-red-500' : 'border-black/[0.08] dark:border-white/[0.08]'

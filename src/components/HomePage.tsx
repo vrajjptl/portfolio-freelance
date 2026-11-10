@@ -10,6 +10,7 @@ import FAQ from './FAQ';
 import Contact from './Contact';
 import Footer from './Footer';
 import MobileBottomDock from './MobileBottomDock';
+import StrobiGuide from './StrobiGuide';
 
 function HomePage() {
   return (
@@ -43,6 +44,9 @@ function HomePage() {
 
       {/* 10. Mobile Bottom Dock: Quick Access for Handheld Devices */}
       <MobileBottomDock />
+
+      {/* 11. Interactive Strobi Avatar Guide (from Bible Strong Avatar Lab) */}
+      <StrobiGuide />
     </div>
   );
 }

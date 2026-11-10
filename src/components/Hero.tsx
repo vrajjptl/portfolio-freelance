@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative pt-12 pb-20 px-4 sm:px-6 max-w-6xl mx-auto w-full overflow-hidden">
+    <section id="hero" className="relative pt-12 pb-20 px-4 sm:px-6 max-w-6xl mx-auto w-full overflow-hidden">
       {/* Subtle Ambient Backlight Glow (Gentle slow pulse) */}
       <div
         className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-[580px] h-44 sm:h-[340px] max-w-[90vw] rounded-full blur-[70px] sm:blur-[110px] pointer-events-none -z-10 opacity-70 dark:opacity-60 animate-pulse-slow"

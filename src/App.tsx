@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import HomePage from './components/HomePage';
 import NotFound from './components/NotFound';
-import WhatsAppFloat from './components/WhatsAppFloat';
 import SmoothCursor from './components/SmoothCursor';
 import { Bars3Icon, XMarkIcon, SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 
@@ -196,7 +195,6 @@ function App() {
         </main>
 
         <SmoothCursor />
-        <WhatsAppFloat />
         <SpeedInsights />
       </div>
     </Router>

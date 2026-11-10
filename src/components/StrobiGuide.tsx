@@ -38,9 +38,10 @@ const StrobiGuide: React.FC<StrobiGuideProps> = ({ externalMood, externalSpeech 
 
   const getInitialPos = () => {
     if (typeof window !== 'undefined') {
+      const isMobile = window.innerWidth < 640;
       return {
-        x: Math.max(20, window.innerWidth - 85),
-        y: Math.max(20, window.innerHeight - 85),
+        x: Math.max(16, window.innerWidth - (isMobile ? 76 : 85)),
+        y: Math.max(16, window.innerHeight - (isMobile ? 148 : 85)),
       };
     }
     return { x: 800, y: 600 };
@@ -541,9 +542,10 @@ const StrobiGuide: React.FC<StrobiGuideProps> = ({ externalMood, externalSpeech 
             eyesRef.current.style.transform = `translate(${eyeX}px, ${eyeY}px)`;
           }
         } else {
-          // Resting at bottom-right corner before first cursor move, or when pinned
-          const cornerX = Math.max(20, window.innerWidth - 85);
-          const cornerY = Math.max(20, window.innerHeight - 85);
+          // Resting at corner before first cursor move, or when pinned, or on touch screens
+          const isMobile = window.innerWidth < 640;
+          const cornerX = Math.max(16, window.innerWidth - (isMobile ? 76 : 85));
+          const cornerY = Math.max(16, window.innerHeight - (isMobile ? 148 : 85));
           p.x = cornerX;
           p.y = cornerY;
           if (containerRef.current) {
@@ -555,10 +557,25 @@ const StrobiGuide: React.FC<StrobiGuideProps> = ({ externalMood, externalSpeech 
       animId = requestAnimationFrame(loop);
     };
 
+    const onResize = () => {
+      const isMobile = window.innerWidth < 640;
+      if (!pos.current.hasMovedMouse || isTouchDevice || !followCursor) {
+        const cornerX = Math.max(16, window.innerWidth - (isMobile ? 76 : 85));
+        const cornerY = Math.max(16, window.innerHeight - (isMobile ? 148 : 85));
+        pos.current.x = cornerX;
+        pos.current.y = cornerY;
+        if (containerRef.current) {
+          containerRef.current.style.transform = `translate3d(${cornerX}px, ${cornerY}px, 0)`;
+        }
+      }
+    };
+
+    window.addEventListener('resize', onResize);
     animId = requestAnimationFrame(loop);
 
     return () => {
       window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('resize', onResize);
       cancelAnimationFrame(animId);
     };
   }, [followCursor, isTouchDevice, externalMood, mood, isMr]);
@@ -855,9 +872,9 @@ const StrobiGuide: React.FC<StrobiGuideProps> = ({ externalMood, externalSpeech 
         </div>
       </div>
 
-      {/* Expanded Interactive Navigation Guide Modal (Anchored on bottom-right, z-[80]) */}
+      {/* Expanded Interactive Navigation Guide Modal (Anchored above dock on mobile, bottom-right on desktop) */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 z-[80] w-72 sm:w-80 rounded-2xl bg-white/95 dark:bg-[#11141c]/95 backdrop-blur-md border border-black/[0.08] dark:border-white/[0.08] shadow-2xl p-4 transition-all duration-200 animate-in fade-in slide-in-from-bottom-2">
+        <div className="fixed bottom-24 left-3 right-3 sm:left-auto sm:right-6 sm:bottom-6 sm:w-80 w-auto z-[80] rounded-2xl bg-white/95 dark:bg-[#11141c]/95 backdrop-blur-md border border-black/[0.08] dark:border-white/[0.08] shadow-2xl p-4 transition-all duration-200 animate-in fade-in slide-in-from-bottom-2">
           {/* Card Topbar */}
           <div className="flex items-center justify-between pb-2.5 border-b border-black/[0.06] dark:border-white/[0.06] mb-3">
             <div className="flex items-center gap-2">

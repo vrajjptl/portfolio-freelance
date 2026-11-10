@@ -1,10 +1,24 @@
 // src/components/MobileBottomDock.tsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PhoneIcon, BanknotesIcon } from '@heroicons/react/24/outline';
 
 const MobileBottomDock: React.FC = () => {
   const { i18n } = useTranslation();
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Reveal dock only once user has scrolled past the hero section (~300px)
+      // This prevents CTA duplication with the hero's primary buttons
+      setVisible(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const waText =
     i18n.language === 'mr'
       ? 'नमस्कार DeliverNow, मला माझ्या व्यवसायासाठी वेबसाईट किंवा ॲप हवी आहे.'
@@ -19,7 +33,11 @@ const MobileBottomDock: React.FC = () => {
   return (
     <aside
       aria-label="Mobile quick actions"
-      className="sm:hidden fixed left-3 right-3 z-40"
+      className={`sm:hidden fixed left-3 right-3 z-40 transition-all duration-300 ${
+        visible
+          ? 'opacity-100 translate-y-0 pointer-events-auto'
+          : 'opacity-0 translate-y-8 pointer-events-none'
+      }`}
       style={{ bottom: 'calc(0.75rem + env(safe-area-inset-bottom, 0px))' }}
     >
       <div className="flex items-center justify-between p-1.5 rounded-2xl bg-white/95 dark:bg-[#11141c]/95 backdrop-blur-md border border-black/[0.08] dark:border-white/[0.08] shadow-xl shadow-black/10 dark:shadow-black/40">

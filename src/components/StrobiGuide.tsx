@@ -207,24 +207,24 @@ const StrobiGuide: React.FC<StrobiGuideProps> = ({ externalMood, externalSpeech 
         if (text.includes('स्टार्टर') || text.includes('Starter')) {
           return {
             text: isMr
-              ? '💰 स्टार्टर पॅकेज: ₹**** — १ पान जलद वेबसाईट, ३-५ दिवसांत रेडी!'
-              : '💰 Starter Package: ₹**** — 1-page fast website ready in 3-5 days!',
+              ? '💰 स्टार्टर पॅकेज: ₹४,९९९ पासून — १ पान जलद वेबसाईट, ३-५ दिवसांत रेडी!'
+              : '💰 Starter Package: from ₹4,999 — 1-page fast website ready in 3-5 days!',
             mood: 'happy',
           };
         }
         if (text.includes('बिझनेस') || text.includes('Business')) {
           return {
             text: isMr
-              ? '🚀 बिझनेस पॅकेज: ₹**** — ५ पाने, SEO आणि WhatsApp कॅटलॉग!'
-              : '🚀 Business Package: ₹**** — 5 pages, SEO & WhatsApp ordering catalog!',
+              ? '🚀 बिझनेस पॅकेज: ₹८,९९९ पासून — ५ पाने, SEO आणि WhatsApp कॅटलॉग!'
+              : '🚀 Business Package: from ₹8,999 — 5 pages, SEO & WhatsApp ordering catalog!',
             mood: 'happy',
           };
         }
         if (text.includes('सानुकूल') || text.includes('Custom')) {
           return {
             text: isMr
-              ? '⚙️ सानुकूल पॅकेज: ₹**** — दुकान POS बिलिंग किंवा अँड्रॉइड ॲप!'
-              : '⚙️ Custom Package: ₹**** — Shop counter POS billing & custom apps!',
+              ? '⚙️ सानुकूल कोटेशन: ₹१४,९९९+ — दुकान POS बिलिंग किंवा अँड्रॉइड ॲप!'
+              : '⚙️ Custom Quote: from ₹14,999+ — Shop counter POS billing & custom apps!',
             mood: 'happy',
           };
         }
@@ -657,8 +657,8 @@ const StrobiGuide: React.FC<StrobiGuideProps> = ({ externalMood, externalSpeech 
           : 'Interactive demos! Test our live WhatsApp catalog and clinic queue systems.';
       case 'pricing':
         return isMr
-          ? '१००% पारदर्शक किंमत! ₹**** पासून सुरू, शून्य लपलेले शुल्क.'
-          : 'Transparent packages starting at ₹**** with zero hidden commissions.';
+          ? '१००% पारदर्शक किंमत! ₹४,९९९ पासून सुरू, शून्य लपलेले शुल्क.'
+          : 'Transparent packages starting at ₹4,999 with zero hidden commissions.';
       case 'contact':
         return isMr
           ? 'थेट कोटेशन फॉर्म! नाव व फोन टाका, आम्ही २ तासांत कोटेशन पाठवू.'

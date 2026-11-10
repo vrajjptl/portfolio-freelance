@@ -65,6 +65,10 @@ function App() {
             {/* Brand Logo & Quiet Status */}
             <a
               href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
               className="flex items-center gap-2.5 group focus:outline-none"
             >
               <div className="w-7 h-7 rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 flex items-center justify-center font-semibold text-xs tracking-tight">

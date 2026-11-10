@@ -22,6 +22,14 @@ interface ProjectItem {
 const SampleWork: React.FC = () => {
   const { t, i18n } = useTranslation();
   const [activeModal, setActiveModal] = useState<string | null>(null);
+  const [clinicToken, setClinicToken] = useState<number>(14);
+  const [tokenConfirmed, setTokenConfirmed] = useState<boolean>(false);
+  const [posItems, setPosItems] = useState([
+    { name: 'Wheat Flour (10kg)', price: 450, qty: 1 },
+    { name: 'Sunflower Oil (1L)', price: 160, qty: 2 },
+    { name: 'Sugar (5kg)', price: 210, qty: 1 },
+  ]);
+  const [posReceiptPrinted, setPosReceiptPrinted] = useState<boolean>(false);
 
   const projects: ProjectItem[] = [
     {
@@ -195,17 +203,42 @@ const SampleWork: React.FC = () => {
                   </div>
                   <div className="border border-black/[0.06] dark:border-white/[0.06] rounded-lg p-3 space-y-2">
                     <div className="flex justify-between py-1.5 border-b border-black/[0.04] dark:border-white/[0.04]">
-                      <span className="text-zinc-800 dark:text-zinc-200">Urea (45kg bag)</span>
-                      <span className="text-emerald-600 font-medium">{i18n.language === 'mr' ? 'उपलब्ध' : 'In stock'}</span>
+                      <div>
+                        <div className="text-zinc-900 dark:text-zinc-100 font-medium">Urea (45kg bag)</div>
+                        <div className="text-[11px] text-zinc-500">₹266 / bag</div>
+                      </div>
+                      <span className="text-emerald-600 font-medium self-center">{i18n.language === 'mr' ? 'उपलब्ध' : 'In stock'}</span>
                     </div>
                     <div className="flex justify-between py-1.5 border-b border-black/[0.04] dark:border-white/[0.04]">
-                      <span className="text-zinc-800 dark:text-zinc-200">10:26:26 NPK Fertilizer (50kg)</span>
-                      <span className="text-emerald-600 font-medium">{i18n.language === 'mr' ? 'उपलब्ध' : 'In stock'}</span>
+                      <div>
+                        <div className="text-zinc-900 dark:text-zinc-100 font-medium">10:26:26 NPK Fertilizer (50kg)</div>
+                        <div className="text-[11px] text-zinc-500">₹1,470 / bag</div>
+                      </div>
+                      <span className="text-emerald-600 font-medium self-center">{i18n.language === 'mr' ? 'उपलब्ध' : 'In stock'}</span>
                     </div>
                     <div className="flex justify-between py-1.5">
-                      <span className="text-zinc-800 dark:text-zinc-200">Soybean Seeds (30kg)</span>
-                      <span className="text-emerald-600 font-medium">{i18n.language === 'mr' ? 'उपलब्ध' : 'In stock'}</span>
+                      <div>
+                        <div className="text-zinc-900 dark:text-zinc-100 font-medium">Soybean Certified Seeds (30kg)</div>
+                        <div className="text-[11px] text-zinc-500">₹2,850 / bag</div>
+                      </div>
+                      <span className="text-emerald-600 font-medium self-center">{i18n.language === 'mr' ? 'उपलब्ध' : 'In stock'}</span>
                     </div>
+                  </div>
+
+                  {/* Interactive Test Action */}
+                  <div className="pt-2">
+                    <a
+                      href={`https://wa.me/917414912464?text=${encodeURIComponent(
+                        i18n.language === 'mr'
+                          ? 'नमस्कार KrishiBazaar (डेमो), मला 1x Urea आणि 1x NPK खताची चालू दराने ऑर्डर करायची आहे.'
+                          : 'Hi KrishiBazaar (Live Demo), I would like to order 1x Urea and 1x NPK Fertilizer at live rates.'
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-2.5 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium flex items-center justify-center gap-2 transition-colors shadow-sm"
+                    >
+                      <span>💬 {i18n.language === 'mr' ? 'WhatsApp वर १-क्लिक टेस्ट ऑर्डर पाठवा' : 'Test 1-Click WhatsApp Order Placement'}</span>
+                    </a>
                   </div>
                 </div>
               )}
@@ -217,14 +250,51 @@ const SampleWork: React.FC = () => {
                       ? 'रुग्णांना फोन करायची गरज नाही. थेट तारीख निवडून घरूनच टोकन नंबर मिळतो.'
                       : 'Patients select date and time online and receive an instant OPD token without waiting on phone calls.'}
                   </div>
-                  <div className="border border-black/[0.06] dark:border-white/[0.06] rounded-lg p-3 flex justify-between items-center">
+                  <div className="border border-black/[0.06] dark:border-white/[0.06] rounded-lg p-4 flex justify-between items-center bg-zinc-50/50 dark:bg-zinc-900/30">
                     <div>
-                      <div className="text-zinc-500 text-[10px]">CURRENT TOKEN</div>
-                      <div className="text-2xl font-mono font-medium text-zinc-900 dark:text-zinc-100">#14</div>
+                      <div className="text-zinc-500 text-[10px] tracking-wider uppercase">{i18n.language === 'mr' ? 'सध्याचा टोकन क्र.' : 'CURRENT TOKEN'}</div>
+                      <div className="text-3xl font-mono font-medium text-cyan-600 dark:text-cyan-400">#{clinicToken}</div>
+                      <div className="text-[11px] text-zinc-500 mt-1">{i18n.language === 'mr' ? 'अंदाजित वेळ: १० मिनिटांत' : 'Est. wait: ~10 mins'}</div>
                     </div>
-                    <span className="px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 text-xs">
-                      Dr. Patil
-                    </span>
+                    <div className="text-right space-y-1">
+                      <span className="px-2.5 py-1 rounded bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 text-xs font-medium inline-block">
+                        Dr. S. Patil (MD)
+                      </span>
+                      <div className="text-[11px] text-emerald-600 font-medium">OPD Active (10:00 - 14:00)</div>
+                    </div>
+                  </div>
+
+                  {tokenConfirmed && (
+                    <div className="p-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-800 dark:text-emerald-300 text-xs flex items-center justify-between">
+                      <span>✓ {i18n.language === 'mr' ? `टोकन #${clinicToken} यशस्वीपणे बुक झाले!` : `Token #${clinicToken} successfully reserved!`}</span>
+                      <span className="font-mono text-[11px]">SMS/WA sent</span>
+                    </div>
+                  )}
+
+                  {/* Interactive Button */}
+                  <div className="flex gap-2 pt-2">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setClinicToken(prev => prev + 1);
+                        setTokenConfirmed(true);
+                      }}
+                      className="flex-1 py-2.5 px-3 rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 font-medium text-xs hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors"
+                    >
+                      🎟️ {i18n.language === 'mr' ? 'नवीन टोकन बुक करा (Book Next)' : 'Book Next Patient Token'}
+                    </button>
+                    <a
+                      href={`https://wa.me/917414912464?text=${encodeURIComponent(
+                        i18n.language === 'mr'
+                          ? `नमस्कार Arogya Clinic (डेमो), मी टोकन #${clinicToken} साठी नोंदणी केली आहे.`
+                          : `Hi Arogya Clinic (Live Demo), I registered for OPD token #${clinicToken}.`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="py-2.5 px-3 rounded-lg border border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/5 text-zinc-800 dark:text-zinc-200 font-medium text-xs transition-colors"
+                    >
+                      WhatsApp Alert
+                    </a>
                   </div>
                 </div>
               )}
@@ -233,18 +303,56 @@ const SampleWork: React.FC = () => {
                 <div className="space-y-3">
                   <div className="p-3 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 text-zinc-600 dark:text-zinc-400">
                     {i18n.language === 'mr'
-                      ? 'स्थानिक दुकानांसाठी काउंटर बिलिंग व थर्मल पावती प्रिंटिंग.'
-                      : 'Counter billing software for local shops with instant thermal receipt generation.'}
+                      ? 'स्थानिक दुकानांसाठी काउंटर बिलिंग व थर्मल पावती प्रिंटिंग. बारकोड स्कॅन आणि इन्व्हेंटरी सपोर्ट.'
+                      : 'Counter billing software for local shops with barcode scanning, stock tracking, and thermal receipt generation.'}
                   </div>
-                  <div className="border border-black/[0.06] dark:border-white/[0.06] rounded-lg p-3 font-mono space-y-1">
-                    <div className="flex justify-between text-zinc-500">
-                      <span>Receipt #4892</span>
+
+                  <div className="border border-black/[0.06] dark:border-white/[0.06] rounded-lg p-3 font-mono space-y-2 bg-white dark:bg-[#0c0d12]">
+                    <div className="flex justify-between text-zinc-500 border-b border-black/[0.06] dark:border-white/[0.06] pb-1.5 text-[11px]">
+                      <span>Invoice #4892 (Dukan POS)</span>
                       <span>11:42 AM</span>
                     </div>
-                    <div className="flex justify-between text-zinc-800 dark:text-zinc-200 font-medium">
-                      <span>3 items</span>
-                      <span>₹1,420</span>
+
+                    <div className="space-y-1 py-1">
+                      {posItems.map((item, idx) => (
+                        <div key={idx} className="flex justify-between text-zinc-800 dark:text-zinc-200 text-xs">
+                          <span>{item.qty}x {item.name}</span>
+                          <span>₹{item.price * item.qty}</span>
+                        </div>
+                      ))}
                     </div>
+
+                    <div className="border-t border-black/[0.06] dark:border-white/[0.06] pt-1.5 flex justify-between text-sm font-semibold text-zinc-950 dark:text-zinc-50">
+                      <span>Total (3 items)</span>
+                      <span>₹{posItems.reduce((acc, cur) => acc + cur.price * cur.qty, 0)}</span>
+                    </div>
+                  </div>
+
+                  {posReceiptPrinted && (
+                    <div className="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-800 dark:text-emerald-300 text-xs text-center font-mono animate-in fade-in">
+                      🖨️ Thermal 80mm Bill Printed • Cash Drawer Triggered
+                    </div>
+                  )}
+
+                  {/* Interactive Button */}
+                  <div className="flex gap-2 pt-2">
+                    <button
+                      type="button"
+                      onClick={() => setPosReceiptPrinted(true)}
+                      className="flex-1 py-2.5 px-3 rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 font-medium text-xs hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors"
+                    >
+                      🧾 {i18n.language === 'mr' ? 'थर्मल पावती प्रिंट चाचणी करा' : 'Simulate 80mm Thermal Receipt Print'}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setPosItems(prev => [...prev, { name: 'Tea Powder (500g)', price: 180, qty: 1 }]);
+                        setPosReceiptPrinted(false);
+                      }}
+                      className="py-2.5 px-3 rounded-lg border border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/5 text-zinc-800 dark:text-zinc-200 font-medium text-xs transition-colors"
+                    >
+                      + Barcode Item
+                    </button>
                   </div>
                 </div>
               )}

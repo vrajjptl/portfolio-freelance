@@ -171,7 +171,7 @@ const Contact: React.FC = () => {
       {/* Section Header */}
       <div className="max-w-2xl mb-12 space-y-2">
         <div className="text-xs font-mono text-zinc-500 dark:text-zinc-400">
-          Contact
+          {i18n.language === 'mr' ? 'थेट संपर्क' : 'Contact'}
         </div>
         <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-zinc-950 dark:text-zinc-50">
           {t('contact.title')}
@@ -325,7 +325,7 @@ const Contact: React.FC = () => {
                       onChange={handleChange}
                       onFocus={() => setIsFocused(true)}
                       onBlur={() => setIsFocused(false)}
-                      placeholder="e.g. Ramesh Patil"
+                      placeholder={i18n.language === 'mr' ? 'उदा. रमेश पाटील' : 'e.g. Ramesh Patil'}
                       className={`w-full px-3 py-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border ${
                         errors.name ? 'border-red-500' : 'border-black/[0.08] dark:border-white/[0.08]'
                       } text-base sm:text-xs text-zinc-950 dark:text-zinc-100 placeholder-zinc-400 outline-none`}
@@ -347,7 +347,7 @@ const Contact: React.FC = () => {
                       onChange={handleChange}
                       onFocus={() => setIsFocused(true)}
                       onBlur={() => setIsFocused(false)}
-                      placeholder="e.g. +91 9876543210"
+                      placeholder={i18n.language === 'mr' ? 'उदा. +९१ ९८७६५४३२१०' : 'e.g. +91 9876543210'}
                       className={`w-full px-3 py-2 rounded-lg bg-zinc-50 dark:bg-zinc-900/60 border ${
                         errors.phone ? 'border-red-500' : 'border-black/[0.08] dark:border-white/[0.08]'
                       } text-base sm:text-xs text-zinc-950 dark:text-zinc-100 placeholder-zinc-400 outline-none`}
@@ -405,7 +405,7 @@ const Contact: React.FC = () => {
                     disabled={loading}
                     className="w-full py-2.5 px-4 rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-200 text-xs font-medium transition-colors disabled:opacity-50"
                   >
-                    {loading ? 'Sending...' : t('contact.form.submit')}
+                    {loading ? (i18n.language === 'mr' ? 'पाठवत आहे...' : 'Sending...') : t('contact.form.submit')}
                   </button>
                 </div>
               </form>
